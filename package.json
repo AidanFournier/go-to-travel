@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
     "expo": "~48.0.6",
     "expo-status-bar": "~1.4.4",
     "nativewind": "^2.0.11",
