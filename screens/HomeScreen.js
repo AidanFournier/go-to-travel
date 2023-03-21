@@ -20,6 +20,13 @@ const HomeScreen = () => {
                 </View>
                 <Text className="text-[#E8AF0A] text-3xl font-semibold">To Travel</Text>
             </View>
+            {/* Subtext */}
+            <View className="px-6 mt-8 space-y-3">
+                <Text className="text-[#f78172] text-[42px]">Your next travel destination</Text>
+                <Text className="text-[#E8AF0A] text-[38px] font-bold">is a tap away</Text>
+                <Text className="text-base">Enjoy your trip, and let us handle the details. With Go To Travel, planning your next outing becomes a breeze.</Text>
+            </View>
+
         </SafeAreaView>
     );
 };
