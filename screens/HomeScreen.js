@@ -1,6 +1,7 @@
-import { View, Text, SafeAreaView } from 'react-native';
+import { View, Text, SafeAreaView, Image } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { HeroImage } from '../assets';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -12,7 +13,7 @@ const HomeScreen = () => {
     }, [])
 
     return (
-        <SafeAreaView className="bg-white flex-1 relative">
+        <SafeAreaView className="bg-[#FFE6FC] flex-1 relative">
             {/* Header */}
             <View className="flex-row px-6 mt-8 items-center space-x-2">
                 <View className="w-16 h-16 bg-[#f78172] rounded-full items-center justify-center">
@@ -25,6 +26,14 @@ const HomeScreen = () => {
                 <Text className="text-[#f78172] text-[42px]">Your next travel destination</Text>
                 <Text className="text-[#E8AF0A] text-[38px] font-bold">is a tap away</Text>
                 <Text className="text-base">Enjoy your trip, and let us handle the details. With Go To Travel, planning your next outing becomes a breeze.</Text>
+            </View>
+
+            {/* Image Container */}
+            <View className="flex-1 relative items-center justify-center">
+                <Image 
+                 source={HeroImage}
+                 className="object-contain"
+                />
             </View>
 
         </SafeAreaView>
