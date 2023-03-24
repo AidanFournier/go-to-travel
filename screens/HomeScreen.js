@@ -17,6 +17,7 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView className="bg-[#FFE6FC] flex-1 relative">
+            
             {/* Header */}
             <View className="flex-row px-6 mt-8 items-center space-x-2">
                 <View className="w-16 h-16 bg-[#336699] rounded-full items-center justify-center">
@@ -24,6 +25,7 @@ const HomeScreen = () => {
                 </View>
                 <Text className="text-[#336699] text-3xl font-semibold">To Travel</Text>
             </View>
+
             {/* Subtext */}
             <View className="px-6 mt-8 space-y-3">
                 <Text className="text-[#E77587] text-[42px]">Travelling in Japan</Text>
@@ -51,15 +53,13 @@ const HomeScreen = () => {
                 />
 
                 {/* CTA Button */}
-                
-                    <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
-                        <TouchableOpacity>
-                            <LinearGradient colors={['#8AC6D3', '#C2E6B1']} className="w-[110] h-[100] rounded-full items-center justify-center">
-                                <Text className="text-white text-[40px] font-semibold">Go</Text>
-                            </LinearGradient>
-                        </TouchableOpacity>
-                    </Animatable.View>
-                
+                <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
+                    <TouchableOpacity>
+                        <LinearGradient colors={['#8AC6D3', '#C2E6B1']} className="w-[110] h-[100] rounded-full items-center justify-center">
+                            <Text className="text-white text-[40px] font-semibold">Go</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </Animatable.View>
             </View>
 
         </SafeAreaView>
