@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, Image } from 'react-native';
+import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Animatable from 'react-native-animatable';
 
 import { HeroImage, HeroImageSlide1, HeroImageSlide2 } from '../assets';
 
@@ -33,24 +34,32 @@ const HomeScreen = () => {
             {/* Image Container */}
             <View className="flex-1 relative items-center justify-center">
                 <Image 
-                 source={HeroImage}
-                 className="object-contain"
+                    source={HeroImage}
+                    className="object-contain"
                 />
-                <Image 
-                 source={HeroImageSlide1}
-                 className="absolute"
+                <Animatable.Image 
+                    animation="slideInRight"
+                    easing="ease-in"
+                    source={HeroImageSlide1}
+                    className="absolute"
                 />
-                <Image 
-                 source={HeroImageSlide2}
-                 className="absolute"
+                <Animatable.Image 
+                    animation="slideInUp"
+                    easing="ease-in"
+                    source={HeroImageSlide2}
+                    className="absolute"
                 />
 
                 {/* CTA Button */}
-                <View className="absolute bottom-70">
-                    <LinearGradient colors={['#8AC6D3', '#C2E6B1']} className="w-[110] h-[100] rounded-full items-center justify-center">
-                        <Text>Go</Text>
-                    </LinearGradient>
-                </View>
+                
+                    <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
+                        <TouchableOpacity>
+                            <LinearGradient colors={['#8AC6D3', '#C2E6B1']} className="w-[110] h-[100] rounded-full items-center justify-center">
+                                <Text className="text-white text-[40px] font-semibold">Go</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    </Animatable.View>
+                
             </View>
 
         </SafeAreaView>
