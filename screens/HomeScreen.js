@@ -54,7 +54,9 @@ const HomeScreen = () => {
 
                 {/* CTA Button */}
                 <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("Discover")}
+                    >
                         <LinearGradient colors={['#8AC6D3', '#C2E6B1']} className="w-[110] h-[100] rounded-full items-center justify-center">
                             <Text className="text-white text-[40px] font-semibold">Go</Text>
                         </LinearGradient>
