@@ -33,15 +33,18 @@ const Discover = () => {
             {/* Google Places Search Input */}
             <View className="flex-row items-center bg-white mx-4 rounded-xl py-1 px-4 shadow-lg mt-5">
                 <GooglePlacesAutocomplete
+                    GooglePlacesDetailsQuery={{ fields: "geometry" }}
+                    fetchDetails={true}
                     placeholder='Search'
                     onPress={(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        console.log(data, details);
+                        console.log(details?.geometry?.viewport);
                     }}
                     query={{
                         key: REACT_NATIVE_GOOGLE_PLACES_API_KEY,
                         language: 'en',
                     }}
+                    onFail={(error) => console.error(error)}
                 />
             </View>
         </SafeAreaView>
