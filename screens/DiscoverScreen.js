@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { Avatar, HotelIcon } from '../assets';
+import { AttractionsIcon, Avatar, HotelIcon, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 
 const Discover = () => {
@@ -53,11 +53,25 @@ const Discover = () => {
 
             {/* Menu Container */}
             <ScrollView>
-                <View className="flex-row items-center justify-center px-8 mt-8">
+                <View className="flex-row items-center justify-between px-8 mt-8">
                     <MenuContainer 
-                        key={"hotel"}
+                        key={"hotels"}
                         title="Hotels"
                         imageSrc={HotelIcon}
+                        type={type}
+                        setType={setType}
+                    />
+                    <MenuContainer 
+                        key={"attractions"}
+                        title="Attractions"
+                        imageSrc={AttractionsIcon}
+                        type={type}
+                        setType={setType}
+                    />
+                    <MenuContainer 
+                        key={"restaurants"}
+                        title="Restaurants"
+                        imageSrc={RestaurantsIcon}
                         type={type}
                         setType={setType}
                     />
