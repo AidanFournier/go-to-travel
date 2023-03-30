@@ -5,3 +5,4 @@ export { default as Avatar } from "./avatar-1.png";
 export { default as HotelIcon } from "./hotels.png";
 export { default as AttractionsIcon } from "./attractions.png";
 export { default as RestaurantsIcon } from "./restaurants.png";
+export { default as RestaurantDefault } from "./restaurant-default.png";

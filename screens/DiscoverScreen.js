@@ -5,8 +5,9 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, HotelIcon, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, HotelIcon, RestaurantDefault, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
+import ItemCardContainer from '../components/ItemCardContainer';
 
 const Discover = () => {
     
@@ -87,8 +88,12 @@ const Discover = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ScrollView>
 
+                <View className=" px-4 mt-8 flex-row items-center justify-evenly flex-wrap">
+                    <ItemCardContainer key={"1"} imageSrc={RestaurantDefault} name="A super duper fancy place" location="Tokyo" />
+                    <ItemCardContainer key={"2"} imageSrc={RestaurantDefault} name="Omurice" location="Osaka" />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 };
