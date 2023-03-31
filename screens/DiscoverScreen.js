@@ -89,7 +89,7 @@ const Discover = () => {
                     </View>
                 </View>
 
-                <View className=" px-4 mt-8 flex-row items-center justify-evenly flex-wrap">
+                <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
                     <ItemCardContainer key={"1"} imageSrc={RestaurantDefault} name="A super duper fancy place" location="Tokyo" />
                     <ItemCardContainer key={"2"} imageSrc={RestaurantDefault} name="Omurice" location="Osaka" />
                 </View>
