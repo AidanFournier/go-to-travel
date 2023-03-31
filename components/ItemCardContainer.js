@@ -4,7 +4,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const ItemCardContainer = ({  imageSrc, name, location }) => {
   return (
-    <TouchableOpacity className="w-[170px] rounded-md border border-white space-y-2 px-3 py-2 my-2 shadow-md bg-white">
+    <TouchableOpacity className="w-[185px] rounded-md border border-white space-y-2 px-3 py-2 my-2 shadow-md bg-white">
         <Image 
             source={imageSrc}
             className="w-full h-40 rounded-md object-cover"
