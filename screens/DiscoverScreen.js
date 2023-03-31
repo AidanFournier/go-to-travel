@@ -5,7 +5,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, HotelIcon, RestaurantDefault, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, HotelIcon, NotFound, RestaurantDefault, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 
@@ -15,6 +15,7 @@ const Discover = () => {
 
     const [type, setType] = useState("restaurants");
     const [isLoading, setIsLoading] = useState(false);
+    const [mainData, setMainData] = useState([]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -55,55 +56,66 @@ const Discover = () => {
             </View>
 
             {/* Menu Container */}
-            {isLoading ? 
-            <View className="flex-1 items-center justify-center">
-                <ActivityIndicator size="large" color="#E77587" />
-            </View> : 
-            
-            <ScrollView>
-                <View className="flex-row items-center justify-between px-8 mt-8">
-                    <MenuContainer 
-                        key={"hotels"}
-                        title="Hotels"
-                        imageSrc={HotelIcon}
-                        type={type}
-                        setType={setType}
-                    />
-                    <MenuContainer 
-                        key={"attractions"}
-                        title="Attractions"
-                        imageSrc={AttractionsIcon}
-                        type={type}
-                        setType={setType}
-                    />
-                    <MenuContainer 
-                        key={"restaurants"}
-                        title="Restaurants"
-                        imageSrc={RestaurantsIcon}
-                        type={type}
-                        setType={setType}
-                    />
+            {isLoading ? (
+                <View className="flex-1 items-center justify-center">
+                    <ActivityIndicator size="large" color="#E77587" />
                 </View>
-
-                <View>
+            ) : ( 
+                <ScrollView>
                     <View className="flex-row items-center justify-between px-8 mt-8">
-                        <Text className="text-[#336699] text-[28px] font-bold">Top Results</Text>
-                        <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-                            <Text className="text-[#336699] text-[20px] font-bold">Explore</Text>
-                            <FontAwesome5 name="long-arrow-alt-right" size={24} color="#E77587" />
-                        </TouchableOpacity>
+                        <MenuContainer 
+                            key={"hotels"}
+                            title="Hotels"
+                            imageSrc={HotelIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"attractions"}
+                            title="Attractions"
+                            imageSrc={AttractionsIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"restaurants"}
+                            title="Restaurants"
+                            imageSrc={RestaurantsIcon}
+                            type={type}
+                            setType={setType}
+                        />
                     </View>
-                </View>
 
-                <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
-                    <ItemCardContainer key={"1"} imageSrc={RestaurantDefault} name="A super duper fancy place" location="Tokyo" />
-                    <ItemCardContainer key={"2"} imageSrc={RestaurantDefault} name="Omurice" location="Osaka" />
-                </View>
-            </ScrollView>
-            }
+                    <View>
+                        <View className="flex-row items-center justify-between px-8 mt-8">
+                            <Text className="text-[#336699] text-[28px] font-bold">Top Results</Text>
+                            <TouchableOpacity className="flex-row items-center justify-center space-x-2">
+                                <Text className="text-[#336699] text-[20px] font-bold">Explore</Text>
+                                <FontAwesome5 name="long-arrow-alt-right" size={24} color="#E77587" />
+                            </TouchableOpacity>
+                        </View>
+                    
 
+                        <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
+                            {mainData?.length > 0 ? (
+                                <>
+                                    <ItemCardContainer key={"1"} imageSrc={RestaurantDefault} name="A super duper fancy place" location="Tokyo" />
+                                    <ItemCardContainer key={"2"} imageSrc={RestaurantDefault} name="Omurice" location="Osaka" />
+                                </> 
+                                ) : (
+                                <>
+                                    <View className="w-full h-[400px] items-center space-y-8 justify-center">
+                                        <Image source={NotFound} className="w-32 h-32 object-cover" />
+                                        <Text className="text-2xl text-[#336699] font-semibold">Eh! No data found.</Text>
+                                    </View>
+                                </>
+                            )}
+                        </View>
+                    </View>
+                </ScrollView>
+            )}
         </SafeAreaView>
-    )
+    );
 };
 
 export default Discover;
