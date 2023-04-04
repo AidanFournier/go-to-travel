@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
 import { AttractionsIcon, Avatar, HotelIcon, NotFound, RestaurantDefault, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
+import { getPlacesData } from '../api';
 
 const Discover = () => {
     
@@ -22,6 +23,17 @@ const Discover = () => {
             headerShown: false,
         });
     }, [])
+
+    useEffect(() => {
+      setIsLoading(true);
+      getPlacesData().then(data => {
+        setMainData(data);
+        setInterval(() => {
+            setIsLoading(false);
+        }, 1000)
+      });
+    }, [])
+    
   
     return (
         <SafeAreaView className="flex-1 bg-white relative">
@@ -99,8 +111,18 @@ const Discover = () => {
                         <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
                             {mainData?.length > 0 ? (
                                 <>
-                                    <ItemCardContainer key={"1"} imageSrc={RestaurantDefault} name="A super duper fancy place" location="Tokyo" />
-                                    <ItemCardContainer key={"2"} imageSrc={RestaurantDefault} name="Omurice" location="Osaka" />
+                                    {mainData?.map((data, i) => (
+                                        <ItemCardContainer 
+                                            key={i} 
+                                            imageSrc={
+                                                data?.photo?.images?.medium?.url ?
+                                                data?.photo?.images?.medium?.url :
+                                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                                            } 
+                                            name={data?.name}
+                                            location={data?.location_string}
+                                        />
+                                    ))}
                                 </> 
                                 ) : (
                                 <>
