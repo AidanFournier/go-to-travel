@@ -121,6 +121,7 @@ const Discover = () => {
                                             } 
                                             name={data?.name}
                                             location={data?.location_string}
+                                            data={data}
                                         />
                                     ))}
                                 </> 
