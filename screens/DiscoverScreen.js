@@ -5,7 +5,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, HotelIcon, NotFound, RestaurantDefault, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
@@ -121,6 +121,7 @@ const Discover = () => {
                                             } 
                                             name={data?.name}
                                             location={data?.location_string}
+                                            data={data}
                                         />
                                     ))}
                                 </> 
