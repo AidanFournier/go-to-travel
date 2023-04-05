@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -35,4 +35,4 @@ const ItemCardContainer = ({ imageSrc, name, location, data }) => {
     )
 }
 
-export default ItemCardContainer
+export default ItemCardContainer;

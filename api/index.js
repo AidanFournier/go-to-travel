@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REACT_NATIVE_TRAVEL_ADVISOR_API_KEY } from "@env";
+import { REACT_NATIVE_TRAVEL_ADVISOR_API_KEY } from "@env"
 
 const url = `https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary`;
 const headers = {
@@ -23,12 +23,9 @@ const params = {
 export const getPlacesData = async () => {
     try {
         const response = await axios.get(url, {headers: headers, params: params});
-        console.log(response.data);
         const data = response.data.data;
-        console.log(data);
         return data;
     } catch (error) {
         console.log(error.response);
     }
 };
-
