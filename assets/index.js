@@ -8,3 +8,5 @@ export { default as RestaurantsIcon } from "./restaurants.png";
 export { default as RestaurantDefault } from "./restaurant-default.png";
 export { default as NotFound } from "./NotFound.png";
 export { default as ChevronLeft } from "./chevron-left.png";
+export { default as WhiteHeart} from "./white-heart.png";
+export { default as PinkHeart} from "./pink-heart.png";

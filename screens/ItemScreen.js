@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ChevronLeft } from '../assets';
+import { ChevronLeft, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -32,11 +32,11 @@ const ItemScreen = ({ route }) => {
                     />
 
                     <View className="absolute flex-row inset-x-0 top-5 justify-between px-6">
-                        <TouchableOpacity>
-                            <Image source={ChevronLeft} className="w-10 h-10 object-cover"/>
+                        <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-white">
+                            <Image source={ChevronLeft} className="w-8 h-8 object-cover"/>
                         </TouchableOpacity>
                         <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-[#336699]">
-
+                            <Image source={WhiteHeart} className="w-8 h-8 object-cover"/>
                         </TouchableOpacity>
                     </View>
                 </View>
