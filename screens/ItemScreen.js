@@ -83,7 +83,7 @@ const ItemScreen = ({ route }) => {
                 </View>
 
                 {/* Bite-sized info */}
-                <View className="mt-4 flex-row items-center justify-evenly">
+                <View className="mt-4 flex-row items-center justify-between">
                     {data?.rating && (
                         <View className="flex-row items-center space-x-2">
                             <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
