@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { BlueStar, ChevronLeft, Medal, PriceTag, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeft, Email, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -141,6 +141,28 @@ const ItemScreen = ({ route }) => {
                         ))}
                     </View>
                 )}
+
+                {/* Contact Info */}
+                <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl">
+                    {data?.phone && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Phone} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg">{data?.phone}</Text>
+                        </View>
+                    )}
+                    {data?.email && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Email} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg">{data?.email}</Text>
+                        </View>
+                    )}
+                    {data?.address && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Map} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg">{data?.address}</Text>
+                        </View>
+                    )}
+                </View>
 
             </ScrollView>
         </SafeAreaView>
