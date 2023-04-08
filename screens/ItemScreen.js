@@ -57,21 +57,23 @@ const ItemScreen = ({ route }) => {
                             </Text>
                         </View>
                     </View>
+
+                    <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
+                        {data?.open_now_text === "Open Now" ? 
+                            <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
+                            :
+                            <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
+                        }
+                    </View>
                 </View>
 
                 {/* Name and Location */}
                 <View className="mt-6 px-2">
-                    <View className="flex-row justify-between flex-wrap">
-                        <Text className="text-[#336699] text-[24px] mr-2 font-bold pb-1">
+                    <View className="flex-row justify-between">
+                        <Text className="text-[#336699] text-[24px] mr-32 font-bold pb-1 flex-wrap">
                             {data?.name}
                         </Text>
-                        <View className="px-2 rounded-md shadow-sm bg-white items-center justify-center">
-                            {data?.open_now_text === "Open Now" ? 
-                                <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
-                                :
-                                <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
-                            }
-                        </View>
+                        
                     </View>
 
                     <View className="flex-row items-center space-x-2 mt-2">
@@ -147,19 +149,19 @@ const ItemScreen = ({ route }) => {
                     {data?.phone && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Phone} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg">{data?.phone}</Text>
+                            <Text className="text-[#336699] text-lg mr-2 flex-wrap">{data?.phone}</Text>
                         </View>
                     )}
                     {data?.email && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Email} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg">{data?.email}</Text>
+                            <Text className="text-[#336699] text-lg mr-4 flex-wrap">{data?.email}</Text>
                         </View>
                     )}
                     {data?.address && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Map} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg">{data?.address}</Text>
+                            <Text className="text-[#336699] text-lg mr-5 flex-wrap">{data?.address}</Text>
                         </View>
                     )}
                 </View>
