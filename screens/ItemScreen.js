@@ -128,6 +128,20 @@ const ItemScreen = ({ route }) => {
                     </Text>
                 )}
 
+                {/* Cuisine Tags */}
+                {data?.cuisine && (
+                    <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4">
+                        {data?.cuisine.map((cuisine) => (
+                            <TouchableOpacity
+                                key={cuisine.key}
+                                className="px-2 py-1 rounded-md bg-[#8C9EA6]"
+                            >
+                                <Text className="text-white">{cuisine.name}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                )}
+
             </ScrollView>
         </SafeAreaView>
     );
