@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { BlueStar, ChevronLeft, Medal, PriceTag, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeft, Email, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -57,21 +57,23 @@ const ItemScreen = ({ route }) => {
                             </Text>
                         </View>
                     </View>
+
+                    <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
+                        {data?.open_now_text === "Open Now" ? 
+                            <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
+                            :
+                            <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
+                        }
+                    </View>
                 </View>
 
                 {/* Name and Location */}
                 <View className="mt-6 px-2">
-                    <View className="flex-row justify-between flex-wrap">
-                        <Text className="text-[#336699] text-[24px] mr-2 font-bold pb-1">
+                    <View className="flex-row justify-between">
+                        <Text className="text-[#336699] text-[24px] mr-32 font-bold pb-1 flex-wrap">
                             {data?.name}
                         </Text>
-                        <View className="px-2 rounded-md shadow-sm bg-white items-center justify-center">
-                            {data?.open_now_text === "Open Now" ? 
-                                <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
-                                :
-                                <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
-                            }
-                        </View>
+                        
                     </View>
 
                     <View className="flex-row items-center space-x-2 mt-2">
@@ -128,7 +130,48 @@ const ItemScreen = ({ route }) => {
                     </Text>
                 )}
 
+                {/* Cuisine Tags */}
+                {data?.cuisine && (
+                    <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4">
+                        {data?.cuisine.map((cuisine) => (
+                            <TouchableOpacity
+                                key={cuisine.key}
+                                className="px-2 py-1 rounded-md bg-[#8C9EA6]"
+                            >
+                                <Text className="text-white">{cuisine.name}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                )}
+
+                {/* Contact Info */}
+                <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
+                    {data?.phone && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Phone} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg mr-2 flex-wrap">{data?.phone}</Text>
+                        </View>
+                    )}
+                    {data?.email && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Email} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg mr-4 flex-wrap">{data?.email}</Text>
+                        </View>
+                    )}
+                    {data?.address && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Map} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg mr-5 flex-wrap">{data?.address}</Text>
+                        </View>
+                    )}
+                </View>
+
             </ScrollView>
+
+            {/* Call to Action */}
+            <View className="mx-3 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
+                <Text className="text-3xl font-semibold tracking-wider text-gray-100">Book Now</Text>
+            </View>
         </SafeAreaView>
     );
 };

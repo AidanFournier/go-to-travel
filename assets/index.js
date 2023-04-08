@@ -13,3 +13,6 @@ export { default as PinkHeart} from "./pink-heart.png";
 export { default as BlueStar} from "./blue-star.png";
 export { default as Medal} from "./medal.png";
 export { default as PriceTag} from "./price-tag.png";
+export { default as Phone} from "./phone.png";
+export { default as Email} from "./email.png";
+export { default as Map} from "./map.png";
