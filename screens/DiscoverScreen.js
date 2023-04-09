@@ -30,13 +30,13 @@ const Discover = () => {
 
     useEffect(() => {
       setIsLoading(true);
-      getPlacesData(bl_lat, bl_lng, tr_lat, tr_lng).then(data => {
+      getPlacesData(bl_lat, bl_lng, tr_lat, tr_lng, type).then(data => {
         setMainData(data);
         setInterval(() => {
             setIsLoading(false);
         }, 1000)
       });
-    }, [bl_lat, bl_lng, tr_lat, tr_lng]);
+    }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
     
   
     return (
@@ -61,7 +61,6 @@ const Discover = () => {
                     placeholder='Search'
                     onPress={(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
-                        console.log(details?.geometry?.viewport);
                         setBl_lat(details?.geometry?.viewport?.southwest?.lat);
                         setBl_lng(details?.geometry?.viewport?.southwest?.lng);
                         setTr_lat(details?.geometry?.viewport?.northeast?.lat);
