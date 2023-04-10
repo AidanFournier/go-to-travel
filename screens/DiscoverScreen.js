@@ -69,6 +69,7 @@ const Discover = () => {
                     query={{
                         key: REACT_NATIVE_GOOGLE_PLACES_API_KEY,
                         language: 'en',
+                        components: "country:jp"
                     }}
                     onFail={(error) => console.error(error)}
                 />
