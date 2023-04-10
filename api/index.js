@@ -1,7 +1,7 @@
 import axios from "axios";
 import { REACT_NATIVE_TRAVEL_ADVISOR_API_KEY } from "@env"
 
-export const getPlacesData = async ( bl_lat, bl_lng, tr_lat, tr_lng, type ) => {
+export const getPlacesData = async ( { geoCoords: bl_lat, bl_lng, tr_lat, tr_lng }, type ) => {
     
     const url = `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`;
     

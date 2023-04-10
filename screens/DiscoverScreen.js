@@ -17,10 +17,7 @@ const Discover = () => {
     const [type, setType] = useState("restaurants");
     const [isLoading, setIsLoading] = useState(false);
     const [mainData, setMainData] = useState([]);
-    const [bl_lat, setBl_lat] = useState(null);
-    const [bl_lng, setBl_lng] = useState(null);
-    const [tr_lat, setTr_lat] = useState(null);
-    const [tr_lng, setTr_lng] = useState(null);
+    const [geoCoords, setGeoCoords] = useState({});
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -30,15 +27,14 @@ const Discover = () => {
 
     useEffect(() => {
       setIsLoading(true);
-      getPlacesData(bl_lat, bl_lng, tr_lat, tr_lng, type).then(data => {
+      getPlacesData(geoCoords, type).then(data => {
         setMainData(data);
         setInterval(() => {
             setIsLoading(false);
         }, 1000)
       });
-    }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
+    }, [geoCoords, type]);
     
-  
     return (
         <SafeAreaView className="flex-1 bg-white relative">
             {/* Header */}
@@ -60,11 +56,13 @@ const Discover = () => {
                     fetchDetails={true}
                     placeholder='Search'
                     onPress={(data, details = null) => {
-                        // 'details' is provided when fetchDetails = true
-                        setBl_lat(details?.geometry?.viewport?.southwest?.lat);
-                        setBl_lng(details?.geometry?.viewport?.southwest?.lng);
-                        setTr_lat(details?.geometry?.viewport?.northeast?.lat);
-                        setTr_lng(details?.geometry?.viewport?.northeast?.lng);
+                        setGeoCoords(prevCoords => ({
+                            ...prevCoords,
+                            bl_lat: details?.geometry?.viewport?.southwest?.lat,
+                            bl_lng: details?.geometry?.viewport?.southwest?.lng,
+                            tr_lat: details?.geometry?.viewport?.northeast?.lat,
+                            tr_lng: details?.geometry?.viewport?.northeast?.lng
+                        }));
                     }}
                     query={{
                         key: REACT_NATIVE_GOOGLE_PLACES_API_KEY,
