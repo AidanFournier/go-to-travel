@@ -118,17 +118,19 @@ const Discover = () => {
                             {mainData?.length > 0 ? (
                                 <>
                                     {mainData?.map((data, i) => (
-                                        <ItemCardContainer 
-                                            key={i} 
-                                            imageSrc={
-                                                data?.photo?.images?.medium?.url ?
-                                                data?.photo?.images?.medium?.url :
-                                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
-                                            } 
-                                            name={data?.name}
-                                            location={data?.location_string}
-                                            data={data}
-                                        />
+                                        data?.name && (
+                                            <ItemCardContainer 
+                                                key={i} 
+                                                imageSrc={
+                                                    data?.photo?.images?.medium?.url ?
+                                                    data?.photo?.images?.medium?.url :
+                                                    "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                                                } 
+                                                name={data?.name}
+                                                location={data?.location_string}
+                                                data={data}
+                                            />
+                                        )
                                     ))}
                                 </> 
                                 ) : (
