@@ -2,10 +2,9 @@ import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, Activity
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { FontAwesome5 } from '@expo/vector-icons';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, ChevronDown, ChevronLeft, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
@@ -108,8 +107,8 @@ const Discover = () => {
                         <View className="flex-row items-center justify-between px-8 mt-8">
                             <Text className="text-[#336699] text-[28px] font-bold">Top Results</Text>
                             <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-                                <Text className="text-[#336699] text-[20px] font-bold">Explore</Text>
-                                <FontAwesome5 name="long-arrow-alt-right" size={24} color="#E77587" />
+                                <Text className="text-[#8C9EA6] text-[16px] font-bold">Explore</Text>
+                                <Image source={ChevronDown} className="w-4 h-4 object-cover"/>
                             </TouchableOpacity>
                         </View>
                     
@@ -118,17 +117,19 @@ const Discover = () => {
                             {mainData?.length > 0 ? (
                                 <>
                                     {mainData?.map((data, i) => (
-                                        <ItemCardContainer 
-                                            key={i} 
-                                            imageSrc={
-                                                data?.photo?.images?.medium?.url ?
-                                                data?.photo?.images?.medium?.url :
-                                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
-                                            } 
-                                            name={data?.name}
-                                            location={data?.location_string}
-                                            data={data}
-                                        />
+                                        data?.name && (
+                                            <ItemCardContainer 
+                                                key={i} 
+                                                imageSrc={
+                                                    data?.photo?.images?.medium?.url ?
+                                                    data?.photo?.images?.medium?.url :
+                                                    "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                                                } 
+                                                name={data?.name}
+                                                location={data?.location_string}
+                                                data={data}
+                                            />
+                                        )
                                     ))}
                                 </> 
                                 ) : (
