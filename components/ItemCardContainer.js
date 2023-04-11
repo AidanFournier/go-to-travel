@@ -17,12 +17,12 @@ const ItemCardContainer = ({ imageSrc, name, location, data }) => {
 
             {name ? (
                 <>
-                    <Text className="text-[#336699] text-[18px] font-bold">
+                    <Text className="text-[#336699] text-[18px] font-bold my-1">
                         {name?.length > 14 ? `${name.slice(0,14)}..` : name}
                     </Text>
 
                     <View className="flex-row items-center space-x-1">
-                        <FontAwesome5 name="map-marker-alt" size={20} color="#E77587" />
+                        <FontAwesome5 name="map-marker-alt" size={18} color="#E77587" />
                         <Text className="text-[#336699] text-[14px] font-bold">
                             {location?.length > 18 ? `${location.slice(0,18)}..` : location}
                         </Text>
