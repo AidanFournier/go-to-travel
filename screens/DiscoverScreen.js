@@ -113,7 +113,7 @@ const Discover = () => {
                             </TouchableOpacity>
                         </View>
                     
-
+                        {/* Search results */}
                         <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
                             {mainData?.length > 0 ? (
                                 <>
