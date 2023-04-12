@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { BlueStar, ChevronLeft, Email, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeft, Email, Link, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -76,7 +76,7 @@ const ItemScreen = ({ route }) => {
                     <View className="flex-row items-center space-x-2 mt-2">
                         <FontAwesome5 name="map-marker-alt" size={20} color="#8C9EA6" />
                         <Text className="text-[#8C9EA6] text-[20px] font-bold">
-                            {data?.location_string}
+                            {data?.ranking_geo}
                         </Text>
                     </View>
                 </View>
@@ -159,6 +159,12 @@ const ItemScreen = ({ route }) => {
                         <View className="flex-row items-center space-x-6">
                             <Image source={Map} className="w-8 h-8 object-cover"/>
                             <Text className="text-[#336699] text-lg mr-5 flex-wrap">{data?.address}</Text>
+                        </View>
+                    )}
+                    {data?.website && (
+                        <View className="flex-row items-center space-x-6">
+                            <Image source={Link} className="w-8 h-8 object-cover"/>
+                            <Text className="text-[#336699] text-lg mr-5 flex-wrap">{data?.website}</Text>
                         </View>
                     )}
                 </View>

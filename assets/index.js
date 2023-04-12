@@ -17,3 +17,4 @@ export { default as PriceTag} from "./price-tag.png";
 export { default as Phone} from "./phone.png";
 export { default as Email} from "./email.png";
 export { default as Map} from "./map.png";
+export { default as Link} from "./link.png";
