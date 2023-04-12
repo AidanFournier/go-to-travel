@@ -105,7 +105,7 @@ const ItemScreen = ({ route }) => {
                             </View>
                             <View>
                                 <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
-                                <Text className="text-[#8C9EA6]">In {data?.location_string}</Text>
+                                <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 14 ? `${data?.ranking_geo.slice(0,8)}..` : data?.ranking_geo}</Text>
                             </View>
                         </View>
                     )}

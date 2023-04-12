@@ -62,6 +62,7 @@ const Discover = () => {
                             tr_lat: details?.geometry?.viewport?.northeast?.lat,
                             tr_lng: details?.geometry?.viewport?.northeast?.lng
                         }));
+                        console.log(data);
                     }}
                     query={{
                         key: REACT_NATIVE_GOOGLE_PLACES_API_KEY,
