@@ -52,9 +52,6 @@ const ItemScreen = ({ route }) => {
                             <Text className="text-[32px] font-bold text-gray-100">
                                 {data?.price}
                             </Text>
-                            <Text className="text-[12px] px-1 font-bold text-gray-100">
-                                {data?.price_level}
-                            </Text>
                         </View>
                     </View>
 
