@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { BlueStar, ChevronLeft, Email, Link, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
 
@@ -23,18 +24,25 @@ const ItemScreen = ({ route }) => {
             <ScrollView className="flex-1 px-4 py-6">
 
                 {/* Image Card */}
-                <View className="relative bg-white shadow-lg">
-                    <Image
-                        source={
-                            {uri: 
-                                data?.photo?.images?.large?.url ?
-                                data?.photo?.images?.large?.url :
-                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                <View className="relative bg-white rounded-2xl shadow-lg">
+                        <ImageBackground
+                            source={
+                                {uri: 
+                                    data?.photo?.images?.large?.url ?
+                                    data?.photo?.images?.large?.url :
+                                    "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                                }
                             }
-                        }
-                        className="w-full h-72 object-cover rounded-2xl"
-                    />
-
+                            imageStyle={{ borderRadius: 18}}
+                            className="w-full h-72 object-cover rounded-2xl"
+                        >
+                            <LinearGradient
+                                colors={[ 'rgba(255,255,255,0)', 'rgba(0,0,0,0.7)']}
+                                style={{borderRadius: 18}}
+                                className="w-full h-72 object-cover"
+                            ></LinearGradient>
+                        </ImageBackground>
+                        
                     <View className="absolute flex-row inset-x-0 top-5 justify-between px-6">
                         <TouchableOpacity 
                             className="w-10 h-10 rounded-md items-center justify-center bg-white" 
