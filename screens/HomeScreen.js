@@ -16,7 +16,7 @@ const HomeScreen = () => {
     }, [])
 
     return (
-        <SafeAreaView className="bg-[#FFE6FC] flex-1 relative">
+        <SafeAreaView className="bg-white flex-1 relative">
             
             {/* Header */}
             <View className="flex-row px-6 mt-8 items-center space-x-2">
