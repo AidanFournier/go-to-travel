@@ -1,4 +1,4 @@
-export { default as HeroImage } from "./BackgroundMonotone.png";
+export { default as HeroImage } from "./background-monotone.png";
 export { default as HeroImageSlide1 } from "./sakura-small.png";
 export { default as HeroImageSlide2 } from "./sakura-big.png";
 export { default as LogoLarge } from "./logo-large.png";

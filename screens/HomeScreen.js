@@ -17,9 +17,11 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView className="bg-white flex-1 relative">
-            <ImageBackground
+            <Image
                 source={HeroImage}
-            >
+                className="absolute flex-1 justify-center items-center object-fit"
+            />
+            
             {/* Logo Container */}
             <View className="flex-1 relative items-center justify-center mb-28">
                 <Image 
@@ -76,7 +78,7 @@ const HomeScreen = () => {
                 /> */}
 
                 {/* CTA Button */ }
-                <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
+                {/* <Animatable.View animation={"pulse"} easing="ease-in-out" iterationCount={"infinite"} className="absolute bottom-70">
                     <TouchableOpacity
                         onPress={() => navigation.navigate("Discover")}
                     >
@@ -84,9 +86,9 @@ const HomeScreen = () => {
                             <Text className="text-white text-[40px] font-semibold">Go</Text>
                         </LinearGradient>
                     </TouchableOpacity>
-                </Animatable.View> 
+                </Animatable.View>  */}
             {/* /* </View> */}
-            </ImageBackground>
+            
         </SafeAreaView>
     );
 };
