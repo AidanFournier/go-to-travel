@@ -19,28 +19,47 @@ const HomeScreen = () => {
         <SafeAreaView className="bg-white flex-1 relative">
             <Image
                 source={HeroImage}
-                className="absolute flex-1 justify-center items-center object-fit"
+                className="absolute flex-1 object-fit"
             />
+
+            <View className="w-full flex-row justify-center mt-24">
+                <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
+            </View>
             
             {/* Logo Container */}
-            <View className="flex-1 relative items-center justify-center mb-28">
+            <View className="flex-1 relative items-center justify-start mt-24">
                 <Image 
                     source={LogoLarge}
                     className="object-contain w-80 h-80"
                 />
             </View>
 
+            <View className="flex-1 relative items-center justify-center mb-10">
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("Discover")}
+                    className="w-28 h-28 rounded-full items-center justify-center"
+                    >
+                    <Animatable.View
+                        animation={"pulse"}
+                        easing="ease-in-out"
+                        iterationCount={"infinite"}
+                        className="w-24 h-24 items-center justify-center rounded-full bg-[#336699]"
+                    >
+                        <Text className="text-gray-50 text-[40px] font-semibold">Go</Text>
+                    </Animatable.View>
+                </TouchableOpacity>
+            </View>
+
             {/* Header */}
             
 
-            <ImageBackground source={Banner} className="absolute h-80 w-80 -left-16 bottom-0">
                 <View className="flex-row ml-20 items-center space-x-2 absolute left-0 bottom-32">
                     <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
                         <Text className="text-white text-3xl font-semibold">Go</Text>
                     </View>
                     <Text className="text-white text-3xl font-semibold">To Travel</Text>
                 </View>
-            </ImageBackground>
+
 
             {/* <View className="flex-row px-6 mt-4 items-center space-x-2">
                 <View className="w-16 h-16 bg-[#336699] rounded-full items-center justify-center">
@@ -52,9 +71,7 @@ const HomeScreen = () => {
             {/* Subtext */}
             {/* <View className="px-6 mt-8 space-y-3"> */}
                 {/* <Text className="text-[#E77587] text-[42px]">Are you ready to see Japan?</Text> */}
-                <View className="w-full flex-row justify-center items-center mb-4">
-                <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
-                </View>
+                
                 {/* <Text className="text-base">Enjoy yourself, and let us handle the details. With Go To Travel, planning your dream trip becomes a breeze.</Text> */}
             {/* </View> */}
 
