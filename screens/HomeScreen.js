@@ -53,14 +53,13 @@ const HomeScreen = () => {
             {/* Header */}
             
 
-            {/* <ImageBackground source={Banner} className="absolute h-80 w-80 -left-16 bottom-0">
                 <View className="flex-row ml-20 items-center space-x-2 absolute left-0 bottom-32">
                     <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
                         <Text className="text-white text-3xl font-semibold">Go</Text>
                     </View>
                     <Text className="text-white text-3xl font-semibold">To Travel</Text>
                 </View>
-            </ImageBackground> */}
+
 
             {/* <View className="flex-row px-6 mt-4 items-center space-x-2">
                 <View className="w-16 h-16 bg-[#336699] rounded-full items-center justify-center">
