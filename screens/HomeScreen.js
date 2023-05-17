@@ -1,10 +1,9 @@
 import { View, Text, SafeAreaView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 
-import { Banner, HeroImage, HeroImageSlide1, HeroImageSlide2, LogoLarge } from '../assets';
+import { HeroImage, LogoLarge } from '../assets';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -17,24 +16,35 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView className="bg-white flex-1 relative">
+            
+            {/* Background Image */}
             <Image
                 source={HeroImage}
                 className="absolute flex-1 object-fit"
             />
 
-            <View className="w-full flex-row justify-center mt-24">
+            {/* Header */}
+            <View className="flex-row items-center justify-center space-x-2 mt-20 mb-4">
+                <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
+                    <Text className="text-white text-3xl font-semibold">Go</Text>
+                </View>
+                <Text className="text-[#E77587] text-3xl font-semibold text-shadow-xl">To Travel</Text>
+            </View>
+
+            <View className="w-full flex-row justify-center ">
                 <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
             </View>
             
-            {/* Logo Container */}
-            <View className="flex-1 relative items-center justify-start mt-24">
+            {/* Logo */}
+            <View className="flex-1 relative items-center justify-start mt-20">
                 <Image 
                     source={LogoLarge}
                     className="object-contain w-80 h-80"
                 />
             </View>
 
-            <View className="flex-1 relative items-center justify-center mb-10">
+            {/* CTA Button */}
+            <View className="flex-1 relative items-center justify-center">
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Discover")}
                     className="w-28 h-28 rounded-full items-center justify-center"
@@ -50,15 +60,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* Header */}
             
-
-                <View className="flex-row ml-20 items-center space-x-2 absolute left-0 bottom-32">
-                    <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
-                        <Text className="text-white text-3xl font-semibold">Go</Text>
-                    </View>
-                    <Text className="text-white text-3xl font-semibold">To Travel</Text>
-                </View>
 
 
             {/* <View className="flex-row px-6 mt-4 items-center space-x-2">
