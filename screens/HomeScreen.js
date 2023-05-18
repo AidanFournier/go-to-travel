@@ -24,24 +24,30 @@ const HomeScreen = () => {
             />
 
             {/* Header */}
-            <View className="flex-row items-center justify-center space-x-2 mt-20 mb-4">
-                <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
-                    <Text className="text-white text-3xl font-semibold">Go</Text>
+            <Animatable.View animation={"bounceInDown"} duration={1600}>
+                <View className="flex-row items-center justify-center space-x-2 mt-20 mb-4">
+                    <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
+                        <Text className="text-white text-3xl font-semibold">Go</Text>
+                    </View>
+                    <Text className="text-[#E77587] text-3xl font-semibold text-shadow-xl">To Travel</Text>
                 </View>
-                <Text className="text-[#E77587] text-3xl font-semibold text-shadow-xl">To Travel</Text>
-            </View>
 
-            <View className="w-full flex-row justify-center ">
-                <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
-            </View>
-            
+                <View className="w-full flex-row justify-center ">
+                    <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
+                </View>
+            </Animatable.View>
+
             {/* Logo */}
-            <View className="flex-1 relative items-center justify-start mt-20">
+            <Animatable.View 
+                animation={"bounceInDown"}
+                duration={1400}
+                className="flex-1 relative items-center justify-start mt-20"
+            >
                 <Image 
                     source={LogoLarge}
                     className="object-contain w-80 h-80"
                 />
-            </View>
+            </Animatable.View>
 
             {/* CTA Button */}
             <View className="flex-1 relative items-center justify-center">
