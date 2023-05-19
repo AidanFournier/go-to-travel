@@ -4,10 +4,11 @@ import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, ChevronDown, ChevronUp, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
+import BackToTopButton from '../components/BackToTopButton';
 
 const Discover = () => {
     
@@ -145,6 +146,7 @@ const Discover = () => {
                     </View>
                 </ScrollView>
             )}
+            <BackToTopButton />
         </SafeAreaView>
     );
 };
