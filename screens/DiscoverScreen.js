@@ -4,14 +4,15 @@ import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, ChevronDown, ChevronLeft, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
+import BackToTopButton from '../components/BackToTopButton';
 
 const Discover = () => {
     
-    const navigation = useNavigation() ;
+    const navigation = useNavigation();
 
     const [type, setType] = useState("restaurants");
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +23,7 @@ const Discover = () => {
         navigation.setOptions({
             headerShown: false,
         });
-    }, [])
+    }, []);
 
     useEffect(() => {
       setIsLoading(true);
@@ -39,8 +40,8 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-center justify-between px-8 pt-5">
                 <View>
-                    <Text className="text-[38px] text-[#336699] font-bold">Discover</Text>
-                    <Text className="text-[32px] text-[#336699]">the beauty of Japan</Text>
+                    <Text className="text-[38px] text-[#336699] font-bold">Hello Olivia!</Text>
+                    <Text className="text-[32px] text-[#336699]">Where to today?</Text>
                 </View>
 
                 <View className="w-12 h-12 bg-gray-400 rounded-full items-center justify-center shadow-lg">
@@ -53,7 +54,7 @@ const Discover = () => {
                 <GooglePlacesAutocomplete
                     GooglePlacesDetailsQuery={{ fields: "geometry" }}
                     fetchDetails={true}
-                    placeholder='Search'
+                    placeholder='Search by place keyword'
                     onPress={(data, details = null) => {
                         setGeoCoords(prevCoords => ({
                             ...prevCoords,
@@ -145,6 +146,7 @@ const Discover = () => {
                     </View>
                 </ScrollView>
             )}
+            <BackToTopButton />
         </SafeAreaView>
     );
 };

@@ -11,6 +11,7 @@ export { default as RestaurantDefault } from "./restaurant-default.png";
 export { default as NotFound } from "./NotFound.png";
 export { default as ChevronLeft } from "./chevron-left-blue.png";
 export { default as ChevronDown } from "./chevron-down-grey.png";
+export { default as ChevronUp } from "./chevron-up-grey.png";
 export { default as WhiteHeart} from "./heart-white.png";
 export { default as PinkHeart} from "./heart-pink.png";
 export { default as BlueStar} from "./star-blue.png";
