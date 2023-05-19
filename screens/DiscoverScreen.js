@@ -2,16 +2,17 @@ import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, Activity
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import * as Animatable from 'react-native-animatable';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, ChevronDown, ChevronLeft, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
 
 const Discover = () => {
     
-    const navigation = useNavigation() ;
+    const navigation = useNavigation();
 
     const [type, setType] = useState("restaurants");
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +23,7 @@ const Discover = () => {
         navigation.setOptions({
             headerShown: false,
         });
-    }, [])
+    }, []);
 
     useEffect(() => {
       setIsLoading(true);
