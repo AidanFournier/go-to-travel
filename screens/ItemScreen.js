@@ -58,11 +58,14 @@ const ItemScreen = ({ route }) => {
                     </View>
 
                     <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
-                        <View className="flex-column items-start">
-                            <Text className="text-[32px] font-bold text-gray-100">
-                                {data?.price}
-                            </Text>
-                        </View>
+                        {data?.price ?
+                            <View className="flex-column items-start">
+                                <Text className="text-[24px] font-bold text-gray-100">
+                                    {data?.price} 
+                                </Text>
+                                <Text className="text-gray-100">/ per person</Text>
+                            </View>
+                        : <></>}
                     </View>
 
                     <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
@@ -83,9 +86,9 @@ const ItemScreen = ({ route }) => {
                         
                     </View>
 
-                    <View className="flex-row items-center space-x-2 mt-2">
-                        <FontAwesome5 name="map-marker-alt" size={20} color="#8C9EA6" />
-                        <Text className="text-[#8C9EA6] text-[20px] font-bold">
+                    <View className="flex-row items-center space-x-1 mt-2">
+                        <FontAwesome5 name="map-marker-alt" size={16} color="#8C9EA6" />
+                        <Text className="text-[#8C9EA6] text-[16px] font-bold">
                             {data?.ranking_geo}
                         </Text>
                     </View>
@@ -95,7 +98,7 @@ const ItemScreen = ({ route }) => {
                 <View className="mt-4 flex-row items-center justify-between">
                     {data?.rating && (
                         <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
+                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
                                 <Image source={BlueStar} className="w-8 h-8 object-cover"/>
                             </View>
                             <View>
@@ -107,7 +110,7 @@ const ItemScreen = ({ route }) => {
 
                     {data?.ranking && (
                         <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
+                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
                                 <Image source={Medal} className="w-8 h-8 object-cover"/>
                             </View>
                             <View>
@@ -119,7 +122,7 @@ const ItemScreen = ({ route }) => {
 
                     {data?.price_level && (
                         <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-red-100 items-center justify-center shadow-md">
+                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
                                 <Image source={PriceTag} className="w-8 h-8 object-cover"/>
                             </View>
                             <View>
@@ -132,14 +135,14 @@ const ItemScreen = ({ route }) => {
 
                 {/* Description */}
                 {data?.description && (
-                    <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#8C9EA6]">
+                    <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#8C9EA6] px-2">
                         {data?.description}
                     </Text>
                 )}
 
                 {/* Cuisine Tags */}
                 {data?.cuisine && (
-                    <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4">
+                    <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4 px-2">
                         {data?.cuisine.map((cuisine) => (
                             <TouchableOpacity
                                 key={cuisine.key}
@@ -182,9 +185,9 @@ const ItemScreen = ({ route }) => {
             </ScrollView>
 
             {/* Call to Action */}
-            <View className="mx-3 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
+            <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
                 <Text className="text-3xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-            </View>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
