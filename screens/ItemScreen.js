@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { BlueStar, ChevronLeft, Email, Link, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, Link, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -42,16 +42,18 @@ const ItemScreen = ({ route }) => {
                                 className="w-full h-72 object-cover"
                             ></LinearGradient>
                         </ImageBackground>
-                        
-                    <View className="absolute flex-row inset-x-0 top-5 justify-between px-6">
+                    
+                    {/* Image Card Buttons */}
+                    <View className="absolute flex-row inset-x-0 top-4 justify-between px-4">
                         <TouchableOpacity 
-                            className="w-10 h-10 rounded-md items-center justify-center bg-white" 
+                            className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
                             onPress={() => navigation.navigate("Discover")}
                         >
-                            <Image source={ChevronLeft} className="w-8 h-8 object-cover"/>
+                            <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
                         </TouchableOpacity>
-                        <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-[#336699]">
-                            <Image source={WhiteHeart} className="w-8 h-8 object-cover"/>
+
+                        <TouchableOpacity className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]">
+                            <Image source={WhiteHeart} className="w-6 h-6 object-cover"/>
                         </TouchableOpacity>
                     </View>
 
