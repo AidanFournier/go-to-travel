@@ -8,7 +8,6 @@ import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsI
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
-import BackToTopButton from '../components/BackToTopButton';
 
 const Discover = () => {
     
@@ -146,7 +145,6 @@ const Discover = () => {
                     </View>
                 </ScrollView>
             )}
-            <BackToTopButton />
         </SafeAreaView>
     );
 };
