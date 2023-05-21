@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -10,6 +10,9 @@ const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
 
     const data = route?.params?.param;
+
+    const [ text, setText ] = useState(data.description.slice(0, 180));
+    const [ readMore, setReadMore ] = useState(false);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -135,11 +138,28 @@ const ItemScreen = ({ route }) => {
 
                 {/* Description */}
                 {data?.description && (
-                    <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#8C9EA6] px-2">
-                        {data?.description}
-                    </Text>
+                    <>
+                        <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#8C9EA6] px-2">
+                            {text}
+                            {!readMore && '...'}
+                        </Text>
+                        <Text
+                            className="mt-2 text-[16px] font-semibold text-[#336699] px-1"
+                            onPress={() => {
+                                if(!readMore) {
+                                    setText(data.description);
+                                    setReadMore(true);
+                                } else {
+                                    setText(data.description.slice(0, 180));
+                                    setReadMore(false);
+                                }
+                            }}
+                        >
+                            {readMore ? ' Show Less' : ' Read More'}
+                        </Text>
+                    </>
                 )}
-
+                
                 {/* Cuisine Tags */}
                 {data?.cuisine && (
                     <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4 px-2">
