@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground, Linking } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -179,13 +179,13 @@ const ItemScreen = ({ route }) => {
                     {data?.phone && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Phone} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg mr-2 flex-wrap">{data?.phone}</Text>
+                            <Text className="text-[#336699] text-lg mr-2 flex-wrap" onPress={()=>{Linking.openURL(`tel:${data?.phone}`);}}>{data?.phone}</Text>
                         </View>
                     )}
                     {data?.email && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Email} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg mr-4 flex-wrap">{data?.email}</Text>
+                            <Text className="text-[#336699] text-lg mr-4 flex-wrap" onPress={()=>{Linking.openURL(`mailto:${data?.email}`);}}>{data?.email}</Text>
                         </View>
                     )}
                     {data?.address && (
@@ -197,7 +197,7 @@ const ItemScreen = ({ route }) => {
                     {data?.website && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Link} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-lg mr-5 flex-wrap">{data?.website}</Text>
+                            <Text className="text-[#336699] text-lg mr-5 flex-wrap" onPress={()=>{Linking.openURL(`${data?.website}`);}}>{data?.website}</Text>
                         </View>
                     )}
                 </View>
