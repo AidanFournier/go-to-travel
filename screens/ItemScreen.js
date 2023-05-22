@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground, Linking } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground, Linking, Platform } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -20,7 +20,19 @@ const ItemScreen = ({ route }) => {
         });
     }, []);
 
-    console.log(data);
+    const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode ) => {
+        const destination = encodeURIComponent(`${address}`);  
+        const provider = Platform.OS === 'ios' ? 'apple' : 'google'
+        const link = `http://maps.google.com/?daddr=${destination}`;
+    
+        try {
+            const supported = await Linking.canOpenURL(link);
+    
+            if (supported) Linking.openURL(link);
+        } catch (error) {
+            console.log(error);
+        }
+    };
   
     return (
         <SafeAreaView className="flex-1 bg-white relative">
@@ -191,7 +203,11 @@ const ItemScreen = ({ route }) => {
                     {data?.address && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Map} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-[16px] mr-5 flex-wrap">{data?.address}</Text>
+                            <TouchableOpacity onPress={() => openMap()}>
+                                <Text className="text-[#336699] text-[16px] mr-5 flex-wrap">
+                                    {data?.address}
+                                </Text>
+                            </TouchableOpacity>
                         </View>
                     )}
                     {data?.website && (
