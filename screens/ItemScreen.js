@@ -21,8 +21,7 @@ const ItemScreen = ({ route }) => {
     }, []);
 
     const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode ) => {
-        const destination = encodeURIComponent(`${address}`);  
-        const provider = Platform.OS === 'ios' ? 'apple' : 'google'
+        const destination = encodeURIComponent(`${address}`);
         const link = `http://maps.google.com/?daddr=${destination}`;
     
         try {
