@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { BlueStar, ChevronLeftWhite, Email, Link, Map, Medal, Phone, PriceTag, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -19,6 +19,8 @@ const ItemScreen = ({ route }) => {
             headerShown: false,
         });
     }, []);
+
+    console.log(data);
 
     const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode ) => {
         const destination = encodeURIComponent(`${address}`);
@@ -82,19 +84,21 @@ const ItemScreen = ({ route }) => {
                         : <></>}
                     </View>
 
-                    <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
-                        {data?.open_now_text === "Open Now" ? 
-                            <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
-                            :
-                            <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
-                        }
-                    </View>
+                    {data?.open_now_text && 
+                        <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
+                            {data?.open_now_text === "Open Now" ? 
+                                <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
+                                :
+                                <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
+                            }
+                        </View>
+                    }
                 </View>
 
                 {/* Name and Location */}
                 <View className="mt-6 px-2">
                     <View className="flex-row justify-between">
-                        <Text className="text-[#336699] text-[24px] mr-32 font-bold pb-1 flex-wrap">
+                        <Text className="text-[#336699] text-[24px] mr-36 font-bold pb-1 flex-wrap">
                             {data?.name}
                         </Text>
                         
@@ -110,41 +114,77 @@ const ItemScreen = ({ route }) => {
 
                 {/* Bite-sized info */}
                 <View className="mt-4 flex-row items-center justify-between">
-                    {data?.rating && (
-                        <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                <Image source={BlueStar} className="w-8 h-8 object-cover"/>
+                    {data?.rating ? 
+                        (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={BlueStar} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">{data?.rating}</Text>
+                                    <Text className="text-[#8C9EA6]">Rating</Text>
+                                </View>
                             </View>
-                            <View>
-                                <Text className="text-[#8C9EA6]">{data?.rating}</Text>
-                                <Text className="text-[#8C9EA6]">Rating</Text>
+                        ) : (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={GreyStar} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">No</Text>
+                                    <Text className="text-[#8C9EA6]">Rating</Text>
+                                </View>
                             </View>
-                        </View>
-                    )}
+                        )
+                    }
 
-                    {data?.ranking && (
-                        <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                <Image source={Medal} className="w-8 h-8 object-cover"/>
+                    {data?.ranking ? 
+                        (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={Medal} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
+                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 9 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}</Text>
+                                </View>
                             </View>
-                            <View>
-                                <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
-                                <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 14 ? `${data?.ranking_geo.slice(0,8)}..` : data?.ranking_geo}</Text>
+                        ) : (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={MedalGray} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">No Rank</Text>
+                                    <Text className="text-[#8C9EA6]">Found</Text>
+                                </View>
                             </View>
-                        </View>
-                    )}
+                        )
+                    }
 
-                    {data?.price_level && (
-                        <View className="flex-row items-center space-x-2">
-                            <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                <Image source={PriceTag} className="w-8 h-8 object-cover"/>
+                    {data?.price_level ? 
+                        (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={PriceTag} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">{data?.price_level}</Text>
+                                    <Text className="text-[#8C9EA6]">Price Level</Text>
+                                </View>
                             </View>
-                            <View>
-                                <Text className="text-[#8C9EA6]">{data?.price_level}</Text>
-                                <Text className="text-[#8C9EA6]">Price Level</Text>
+                        ) : (
+                            <View className="flex-row items-center space-x-2">
+                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
+                                    <Image source={PriceTagGrey} className="w-8 h-8 object-cover"/>
+                                </View>
+                                <View>
+                                    <Text className="text-[#8C9EA6]">No Price</Text>
+                                    <Text className="text-[#8C9EA6]">Level Found</Text>
+                                </View>
                             </View>
-                        </View>
-                    )}
+                        )
+                    }
                 </View>
 
                 {/* Description */}
