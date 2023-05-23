@@ -20,6 +20,8 @@ const ItemScreen = ({ route }) => {
         });
     }, []);
 
+    console.log(data);
+
     const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode ) => {
         const destination = encodeURIComponent(`${address}`);
         const link = `http://maps.google.com/?daddr=${destination}`;
@@ -82,13 +84,15 @@ const ItemScreen = ({ route }) => {
                         : <></>}
                     </View>
 
-                    <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
-                        {data?.open_now_text === "Open Now" ? 
-                            <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
-                            :
-                            <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
-                        }
-                    </View>
+                    {data?.open_now_text && 
+                        <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
+                            {data?.open_now_text === "Open Now" ? 
+                                <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
+                                :
+                                <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
+                            }
+                        </View>
+                    }
                 </View>
 
                 {/* Name and Location */}
@@ -142,7 +146,7 @@ const ItemScreen = ({ route }) => {
                                 </View>
                                 <View>
                                     <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
-                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 14 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}</Text>
+                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 9 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}</Text>
                                 </View>
                             </View>
                         ) : (
