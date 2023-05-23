@@ -94,7 +94,7 @@ const ItemScreen = ({ route }) => {
                 {/* Name and Location */}
                 <View className="mt-6 px-2">
                     <View className="flex-row justify-between">
-                        <Text className="text-[#336699] text-[24px] mr-32 font-bold pb-1 flex-wrap">
+                        <Text className="text-[#336699] text-[24px] mr-36 font-bold pb-1 flex-wrap">
                             {data?.name}
                         </Text>
                         
@@ -142,7 +142,7 @@ const ItemScreen = ({ route }) => {
                                 </View>
                                 <View>
                                     <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
-                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 14 ? `${data?.ranking_geo.slice(0,8)}..` : data?.ranking_geo}</Text>
+                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 14 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}</Text>
                                 </View>
                             </View>
                         ) : (
