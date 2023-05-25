@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -14,15 +14,18 @@ const ItemScreen = ({ route }) => {
     const [ text, setText ] = useState(data.description.slice(0, 180));
     const [ readMore, setReadMore ] = useState(false);
 
+    const [ saved, setSaved ] = useState(false);
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, []);
 
+    console.log(saved)
     console.log(data);
 
-    const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode ) => {
+    const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode) => {
         const destination = encodeURIComponent(`${address}`);
         const link = `http://maps.google.com/?daddr=${destination}`;
     
@@ -68,8 +71,11 @@ const ItemScreen = ({ route }) => {
                             <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]">
-                            <Image source={WhiteHeart} className="w-6 h-6 object-cover"/>
+                        <TouchableOpacity
+                            className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
+                            onPress={() => setSaved(!saved)}
+                        >
+                            <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
                         </TouchableOpacity>
                     </View>
 
