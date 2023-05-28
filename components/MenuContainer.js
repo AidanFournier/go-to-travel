@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import React from 'react';
 
 const MenuContainer = ({ title, imageSrc, type, setType }) => {
 
@@ -21,4 +21,4 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
     )
 }
 
-export default MenuContainer
+export default MenuContainer;
