@@ -5,6 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart } from '../assets';
+import StatsContainer from '../components/StatsContainer';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -118,77 +119,59 @@ const ItemScreen = ({ route }) => {
                     </View>
                 </View>
 
-                {/* Bite-sized info */}
+                {/* Place Stats */}
                 <View className="mt-4 flex-row items-center justify-between">
-                    {data?.rating ? 
+                   {data?.rating ? 
                         (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={BlueStar} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">{data?.rating}</Text>
-                                    <Text className="text-[#8C9EA6]">Rating</Text>
-                                </View>
-                            </View>
+                            <StatsContainer 
+                                key={"Rating"}
+                                imageSrc={BlueStar}
+                                ratingData={data?.rating}
+                                title={"Rating"}
+                            />
                         ) : (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={GreyStar} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">No</Text>
-                                    <Text className="text-[#8C9EA6]">Rating</Text>
-                                </View>
-                            </View>
+                            <StatsContainer
+                                key={"Rating"}
+                                imageSrc={GreyStar}
+                                ratingData={"No"}
+                                title={"Rating"}
+                            />
                         )
                     }
 
                     {data?.ranking ? 
                         (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={Medal} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">#{data?.ranking_position}</Text>
-                                    <Text className="text-[#8C9EA6]">In {data?.ranking_geo.length > 9 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}</Text>
-                                </View>
-                            </View>
+                            <StatsContainer 
+                                key={"Ranking"}
+                                imageSrc={Medal}
+                                ratingData={`#${data?.ranking_position} in`}
+                                title={data?.ranking_geo.length > 9 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}
+                            />
                         ) : (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={MedalGray} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">No Rank</Text>
-                                    <Text className="text-[#8C9EA6]">Found</Text>
-                                </View>
-                            </View>
+                            <StatsContainer
+                                key={"Ranking"}
+                                imageSrc={MedalGray}
+                                ratingData={"No Rank"}
+                                title={"Found"}
+                            />
                         )
                     }
 
                     {data?.price_level ? 
                         (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={PriceTag} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">{data?.price_level}</Text>
-                                    <Text className="text-[#8C9EA6]">Price Level</Text>
-                                </View>
-                            </View>
+                            <StatsContainer 
+                                key={"Pricing"}
+                                imageSrc={PriceTag}
+                                ratingData={data?.price_level}
+                                title={"Price Range"}
+                            />
                         ) : (
-                            <View className="flex-row items-center space-x-2">
-                                <View className="w-12 h-12 rounded-2xl bg-white items-center justify-center shadow-md">
-                                    <Image source={PriceTagGrey} className="w-8 h-8 object-cover"/>
-                                </View>
-                                <View>
-                                    <Text className="text-[#8C9EA6]">No Price</Text>
-                                    <Text className="text-[#8C9EA6]">Level Found</Text>
-                                </View>
-                            </View>
+                            <StatsContainer
+                                key={"Pricing"}
+                                imageSrc={PriceTagGrey}
+                                ratingData={"No Price"}
+                                title={"Info Found"}
+                            />
                         )
                     }
                 </View>
