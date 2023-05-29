@@ -23,9 +23,6 @@ const ItemScreen = ({ route }) => {
         });
     }, []);
 
-    console.log(saved)
-    console.log(data);
-
     const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode) => {
         const destination = encodeURIComponent(`${address}`);
         const link = `http://maps.google.com/?daddr=${destination}`;
@@ -45,23 +42,23 @@ const ItemScreen = ({ route }) => {
 
                 {/* Image Card */}
                 <View className="relative bg-white rounded-2xl shadow-lg">
-                        <ImageBackground
-                            source={
-                                {uri: 
-                                    data?.photo?.images?.large?.url ?
-                                    data?.photo?.images?.large?.url :
-                                    "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
-                                }
+                    <ImageBackground
+                        source={
+                            {uri: 
+                                data?.photo?.images?.large?.url ?
+                                data?.photo?.images?.large?.url :
+                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
                             }
-                            imageStyle={{ borderRadius: 18}}
-                            className="w-full h-72 object-cover rounded-2xl"
-                        >
-                            <LinearGradient
-                                colors={[ 'rgba(255,255,255,0)', 'rgba(0,0,0,0.7)']}
-                                style={{borderRadius: 18}}
-                                className="w-full h-72 object-cover"
-                            ></LinearGradient>
-                        </ImageBackground>
+                        }
+                        imageStyle={{ borderRadius: 18}}
+                        className="w-full h-72 object-cover rounded-2xl"
+                    >
+                        <LinearGradient
+                            colors={[ 'rgba(255,255,255,0)', 'rgba(0,0,0,0.7)']}
+                            style={{borderRadius: 18}}
+                            className="w-full h-72 object-cover"
+                        ></LinearGradient>
+                    </ImageBackground>
                     
                     {/* Image Card Buttons */}
                     <View className="absolute flex-row inset-x-0 top-4 justify-between px-4">
@@ -91,6 +88,7 @@ const ItemScreen = ({ route }) => {
                         : <></>}
                     </View>
 
+                    {/* Open/Closed Sign */}
                     {data?.open_now_text && 
                         <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
                             {data?.open_now_text === "Open Now" ? 
@@ -108,7 +106,6 @@ const ItemScreen = ({ route }) => {
                         <Text className="text-[#336699] text-[24px] mr-36 font-bold pb-1 flex-wrap">
                             {data?.name}
                         </Text>
-                        
                     </View>
 
                     <View className="flex-row items-center space-x-1 mt-2">
