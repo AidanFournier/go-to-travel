@@ -1,6 +1,6 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
@@ -25,13 +25,13 @@ const Discover = () => {
     }, []);
 
     useEffect(() => {
-      setIsLoading(true);
-      getPlacesData(geoCoords, type).then(data => {
-        setMainData(data);
-        setInterval(() => {
-            setIsLoading(false);
-        }, 1000)
-      });
+        setIsLoading(true);
+        getPlacesData(geoCoords, type).then(data => {
+            setMainData(data);
+            setInterval(() => {
+                setIsLoading(false);
+            }, 1000)
+        });
     }, [geoCoords, type]);
     
     return (
@@ -62,7 +62,7 @@ const Discover = () => {
                             tr_lat: details?.geometry?.viewport?.northeast?.lat,
                             tr_lng: details?.geometry?.viewport?.northeast?.lng
                         }));
-                        console.log(data);
+                        console.log(geoCoords);
                     }}
                     query={{
                         key: REACT_NATIVE_GOOGLE_PLACES_API_KEY,
