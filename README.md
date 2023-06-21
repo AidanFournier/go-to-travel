@@ -19,9 +19,9 @@ Search by using place name keywords, such as "Roppongi" or "Atami". From there, 
 
 
 ## App
-Access the live project from [Expo Go](https://expo.dev/@aidoufou/go-to-travel?serviceType=classic&distribution=expo-go).
+Check out the [showcase page](https://main--legendary-faun-08a27a.netlify.app/) or access the live project from [Expo Go](https://expo.dev/@aidoufou/go-to-travel?serviceType=classic&distribution=expo-go).
 
-Or, if you already have the Expo Go app on your phone, you can scan this QR code to open Go To Travel:
+If you already have the Expo Go app on your phone, you can scan this QR code to open Go To Travel:
 
 <img src="https://github.com/AidanFournier/go-to-travel/assets/78288118/f8b60ab4-d6b9-4f27-982d-e83ce907917c" alt="Expo Go QR Code" width="200" height="200"/>
 
