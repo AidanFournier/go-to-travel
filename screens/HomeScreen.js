@@ -27,10 +27,19 @@ const HomeScreen = () => {
             <Animatable.View animation={"bounceInDown"} duration={3000}>
                 <View className="flex-row items-start justify-center space-x-2 mt-10 relative">
                     <View className="relative">
-                        <Image source={WhitePin} className="w-16 h-16 flex absolute -right-0.5 -top-2"/>
-                        <Text className="text-[#336699] mr-2 text-3xl font-medium">Go</Text>
+                        <Image source={WhitePin} className="w-14 h-14 flex absolute -right-0.5 -top-2"/>
+                        <Text className="text-[#336699] mr-2 text-2xl font-medium">Go</Text>
                     </View>
-                    <Text className="text-white text-3xl font-medium text-shadow-xl">To Travel</Text>
+                    <Text className="text-white text-2xl font-medium text-shadow-xl">To Travel</Text>
+                </View>
+            </Animatable.View>
+
+            <Animatable.View 
+                animation={"bounceInUp"}
+                duration={6000}
+                className="absolute bottom-0 bg-white/75  h-60 w-full rounded-t-[40px] border-solid border-white border-2">
+                <View className="">
+
                 </View>
             </Animatable.View>
 
