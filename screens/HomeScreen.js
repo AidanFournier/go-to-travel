@@ -1,9 +1,9 @@
-import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 
-import { HeroImage, HomeMorning, LogoLarge } from '../assets';
+import { HomeMorning, LogoLarge, WhitePin } from '../assets';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -23,19 +23,16 @@ const HomeScreen = () => {
                 className="absolute w-screen h-screen"
             />
 
-            {/* Header */}
-            {/* <Animatable.View animation={"bounceInDown"} duration={1600}>
-                <View className="flex-row items-center justify-center space-x-2 mt-20 mb-4">
-                    <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
-                        <Text className="text-white text-3xl font-semibold">Go</Text>
+            {/* Logo */}
+            <Animatable.View animation={"bounceInDown"} duration={3000}>
+                <View className="flex-row items-start justify-center space-x-2 mt-10 relative">
+                    <View className="relative">
+                        <Image source={WhitePin} className="w-16 h-16 flex absolute -right-0.5 -top-2"/>
+                        <Text className="text-[#336699] mr-2 text-3xl font-medium">Go</Text>
                     </View>
-                    <Text className="text-[#E77587] text-3xl font-semibold text-shadow-xl">To Travel</Text>
+                    <Text className="text-white text-3xl font-medium text-shadow-xl">To Travel</Text>
                 </View>
-
-                <View className="w-full flex-row justify-center ">
-                    <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
-                </View>
-            </Animatable.View> */}
+            </Animatable.View>
 
             {/* Logo */}
             {/* <Animatable.View 
