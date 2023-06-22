@@ -25,3 +25,5 @@ export { default as Phone} from "./phone.png";
 export { default as Email} from "./email.png";
 export { default as Map} from "./map.png";
 export { default as Link} from "./link.png";
+export { default as HomeMorning} from "./home-morning.png";
+export { default as WhitePin} from "./pin-white.png";
