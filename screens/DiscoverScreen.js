@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon } from '../assets';
+import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon, Search } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
 import { getPlacesData } from '../api';
@@ -35,25 +35,26 @@ const Discover = () => {
     }, [geoCoords, type]);
     
     return (
-        <SafeAreaView className="flex-1 bg-white relative">
+        <SafeAreaView className="flex-1 bg-[#F6F6F6] relative">
+            
             {/* Header */}
-            <View className="flex-row items-center justify-between px-8 pt-5">
-                <View>
-                    <Text className="text-[38px] text-[#336699] font-bold">Hello Olivia!</Text>
-                    <Text className="text-[32px] text-[#336699]">Where to today?</Text>
+            <View className="flex-row items-start justify-between px-8 pt-5">
+                <View className="mr-12">
+                    <Text className="text-xl text-black font-light mb-4">Hello
+                        <Text className="text-xl text-black font-bold"> Olivia,</Text>
+                    </Text>
+                    <Text className="text-3xl font-extrabold text-black flex-wrap max-w-[260px]">Where do you want to go today?</Text>
                 </View>
-
-                <View className="w-12 h-12 bg-gray-400 rounded-full items-center justify-center shadow-lg">
-                    <Image source={Avatar} className="w-full h-full rounded-full object-cover"/>
-                </View>
+                <Image source={Avatar} className="w-12 h-12 rounded-full object-cover border-solid border-2 border-white"/>
             </View>
 
             {/* Google Places Search Input */}
-            <View className="flex-row items-center bg-white mx-4 rounded-xl py-1 px-4 shadow-lg mt-5">
+            <View className="flex-row items-start bg-white mx-4 rounded-xl py-1 px-4 shadow-md m-8">
+                <Image source={Search} className="w-4 h-4 object-cover mr-1 mt-4"/>
                 <GooglePlacesAutocomplete
                     GooglePlacesDetailsQuery={{ fields: "geometry" }}
                     fetchDetails={true}
-                    placeholder='Search by place keyword'
+                    placeholder='Discover a city'
                     onPress={(data, details = null) => {
                         setGeoCoords(prevCoords => ({
                             ...prevCoords,
