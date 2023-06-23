@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import { LinearGradient } from "expo-linear-gradient";
 
-import { HeroImage, LogoLarge } from '../assets';
+import { HomeMorning, WhitePin } from '../assets';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -16,57 +16,57 @@ const HomeScreen = () => {
     }, []);
 
     return (
-        <SafeAreaView className="bg-white flex-1 relative">
+        <SafeAreaView className="flex-1 relative">
             
             {/* Background Image */}
             <Image
-                source={HeroImage}
-                className="absolute flex-1 object-fit"
+                source={HomeMorning}
+                className="absolute w-screen h-screen"
             />
 
-            {/* Header */}
-            <Animatable.View animation={"bounceInDown"} duration={1600}>
-                <View className="flex-row items-center justify-center space-x-2 mt-20 mb-4">
-                    <View className="w-16 h-16 bg-[#E77587] rounded-full items-center justify-center">
-                        <Text className="text-white text-3xl font-semibold">Go</Text>
-                    </View>
-                    <Text className="text-[#E77587] text-3xl font-semibold text-shadow-xl">To Travel</Text>
-                </View>
-
-                <View className="w-full flex-row justify-center ">
-                    <Text className="text-[#E77587] text-[20px] font-bold">Are you ready to explore Japan?</Text>
-                </View>
-            </Animatable.View>
-
             {/* Logo */}
-            <Animatable.View 
-                animation={"bounceInDown"}
-                duration={1400}
-                className="flex-1 relative items-center justify-start mt-20"
-            >
-                <Image 
-                    source={LogoLarge}
-                    className="object-contain w-80 h-80"
-                />
+            <Animatable.View animation={"bounceInDown"} duration={3000}>
+                <View className="flex-row items-start justify-center space-x-2 mt-10 relative">
+                    <View className="relative">
+                        <Image source={WhitePin} className="w-14 h-14 flex absolute -right-0.5 -top-2"/>
+                        <Text className="text-[#336699] mr-2 text-2xl font-medium">Go</Text>
+                    </View>
+                    <Text className="text-white text-2xl font-medium text-shadow-xl">To Travel</Text>
+                </View>
             </Animatable.View>
 
-            {/* CTA Button */}
-            <View className="flex-1 relative items-center justify-center">
+            <Animatable.View 
+                animation={"slideInUp"}
+                easing="ease-in"
+                duration={1000}
+                delay={2000}
+                className="absolute bottom-0 bg-white/75  h-60 w-full rounded-t-[40px] border-solid border-white border-2 flex items-center justify-between p-8">
+                <View className="flex justify-center items-center">
+                    <Text className="text-2xl font-bold text-[#336699]">Explore Japan.</Text>
+                    <Text className="text-2xl font-bold text-[#336699]">At your own pace.</Text>
+                </View>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Discover")}
-                    className="w-28 h-28 rounded-full items-center justify-center"
+                    className="w-11/12 flex items-center justify-center"
                     >
                     <Animatable.View
                         animation={"pulse"}
                         easing="ease-in-out"
                         iterationCount={"infinite"}
-                        className="w-24 h-24 items-center justify-center rounded-full bg-[#336699]"
+                        className="w-full h-16 rounded-2xl"
                     >
-                        <Text className="text-gray-50 text-[40px] font-semibold">Go</Text>
+                        <LinearGradient 
+                            colors={["#2CADCC", "#336699"]}
+                            start={[0, 0]}
+                            end={[1, 1]}
+                            location={[0.25, 0.4, 1]}
+                            className="w-full h-16 items-center justify-center rounded-2xl"
+                        >
+                            <Text className="text-gray-50 text-2xl font-medium bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Get Started</Text>
+                        </LinearGradient>
                     </Animatable.View>
                 </TouchableOpacity>
-            </View>
-            
+            </Animatable.View>
         </SafeAreaView>
     );
 };
