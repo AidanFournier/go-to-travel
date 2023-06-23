@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
+import { LinearGradient } from "expo-linear-gradient";
 
 const MenuContainer = ({ title, imageSrc, type, setType }) => {
 
@@ -8,15 +9,23 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
     }
 
     return (
-        <TouchableOpacity className="items-center justify-center space-y-2" onPress={handlePress}>
-            <View className={`w-24 h-24 p-2 shadow-sm rounded-full items-center justify-center ${
-                type === title.toLowerCase() ? "bg-gray-200" : "" }`}>
+        <TouchableOpacity 
+            className={`bg-white h-30 w-28 rounded-2xl items-center ${type === title.toLowerCase() ? "shadow-xl" : "" }`} 
+            onPress={handlePress}
+        >
+            <LinearGradient
+                colors={["rgba(44, 173, 204, 0.2)", "rgba(165, 218, 200, 0.2)"]}
+                start={[0, 0]}
+                end={[1, 1]}
+                location={[0.25, 0.4, 1]}
+                className={`w-24 h-20 rounded-xl mt-2 shadow-sm items-center justify-center`}
+            >
                 <Image 
                     source={imageSrc}
-                    className="w-full h-full object-contain"
+                    className="w-16 h-16 object-cover"
                 />
-            </View>
-            <Text className="text-[#336699] text-xl font-semibold">{title}</Text>
+            </LinearGradient>
+            <Text className={`text-lg my-1 ${type === title.toLowerCase() ? "text-black" : "text-[#babbbc]" }`}>{title}</Text>
         </TouchableOpacity>
     )
 }
