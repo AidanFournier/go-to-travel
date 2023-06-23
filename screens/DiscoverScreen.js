@@ -40,7 +40,7 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
-                    <Text className="text-xl text-black font-light mb-4">Hello
+                    <Text className="text-xl text-black mb-4">Hello
                         <Text className="text-xl text-black font-bold"> Olivia,</Text>
                     </Text>
                     <Text className="text-3xl font-extrabold text-black flex-wrap max-w-[260px]">Where do you want to go today?</Text>
@@ -74,48 +74,16 @@ const Discover = () => {
                 />
             </View>
 
-            {/* Menu Container */}
+            {/* Browse Section */}
             {isLoading ? (
                 <View className="flex-1 items-center justify-center">
                     <ActivityIndicator size="large" color="#E77587" />
                 </View>
             ) : ( 
                 <ScrollView>
-                    <View className="flex-row items-center justify-between px-8 mt-8">
-                        <MenuContainer 
-                            key={"hotels"}
-                            title="Hotels"
-                            imageSrc={HotelIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                        <MenuContainer 
-                            key={"attractions"}
-                            title="Attractions"
-                            imageSrc={AttractionsIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                        <MenuContainer 
-                            key={"restaurants"}
-                            title="Restaurants"
-                            imageSrc={RestaurantsIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                    </View>
-
                     <View>
-                        <View className="flex-row items-center justify-between px-8 mt-8">
-                            <Text className="text-[#336699] text-[28px] font-bold">Top Results</Text>
-                            <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-                                <Text className="text-[#8C9EA6] text-[16px] font-bold">Explore</Text>
-                                <Image source={ChevronDown} className="w-4 h-4 object-cover"/>
-                            </TouchableOpacity>
-                        </View>
-                    
                         {/* Search results */}
-                        <View className=" px-1 mt-8 flex-row items-center justify-evenly flex-wrap">
+                        <View className=" px-1 mt-8 flex-row items-center justify-evenly">
                             {mainData?.length > 0 ? (
                                 <>
                                     {mainData?.map((data, i) => (
@@ -144,6 +112,33 @@ const Discover = () => {
                             )}
                         </View>
                     </View>
+
+                    {/* Categories */}
+                    <Text className="text-2xl px-5">Categories</Text>
+                    <View className="flex-row items-center justify-between px-5 mt-4">
+                        <MenuContainer 
+                            key={"hotels"}
+                            title="Hotels"
+                            imageSrc={HotelIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"attractions"}
+                            title="Attractions"
+                            imageSrc={AttractionsIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"restaurants"}
+                            title="Restaurants"
+                            imageSrc={RestaurantsIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                    </View>
+
                 </ScrollView>
             )}
         </SafeAreaView>

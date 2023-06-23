@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
+import { LinearGradient } from "expo-linear-gradient";
 
 import { HeroImage, LogoLarge } from '../assets';
 
