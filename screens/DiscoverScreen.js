@@ -40,10 +40,10 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
-                    <Text className="text-xl text-black mb-4">Hello
-                        <Text className="text-xl text-black font-bold"> Olivia,</Text>
+                    <Text style={{ fontFamily: 'Inter_300Light'}} className="text-xl mb-4">Hello
+                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-xl"> Olivia,</Text>
                     </Text>
-                    <Text className="text-3xl font-extrabold text-black flex-wrap max-w-[260px]">Where do you want to go today?</Text>
+                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-3xl text-black flex-wrap max-w-[265px]">Where do you want to go today?</Text>
                 </View>
                 <Image source={Avatar} className="w-12 h-12 rounded-full object-cover border-solid border-2 border-white"/>
             </View>
@@ -82,7 +82,7 @@ const Discover = () => {
             ) : ( 
                 <>
                     {/* Search results */}
-                    <Text className="text-2xl px-8 mb-4">Explore Japan</Text>
+                    <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-2xl px-8 mb-4">Explore Japan</Text>
                     <ScrollView horizontal={true}>
                         <View className="px-8 flex-row items-start justify-evenly">
                             {mainData?.length > 0 ? (
@@ -115,7 +115,7 @@ const Discover = () => {
                     </ScrollView>
                                         
                     {/* Categories */}
-                    <Text className="text-2xl px-8">Categories</Text>
+                    <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-2xl px-8">Categories</Text>
                     <View className="flex-row items-center justify-between px-8 mt-4">
                         <MenuContainer 
                             key={"hotels"}

@@ -19,13 +19,13 @@ const ItemCardContainer = ({ imageSrc, name, location, data }) => {
                 >
                     {name ? (
                         <View className="m-2 p-2 bg-white/75 rounded-lg">
-                            <Text className="text-sm font-bold mb-1">
+                            <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-sm mb-1">
                                 {name?.length > 14 ? `${name.slice(0,24)}..` : name}
                             </Text>
 
                             <View className="flex-row items-center space-x-1">
                                 <Image source={GreyPin} className="w-3 h-3 object-cover" />
-                                <Text className="text-gray-600 text-sm">
+                                <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-600 text-sm">
                                     {location?.length > 18 ? `${location.slice(0,24)}..` : location}
                                 </Text>
                             </View>
