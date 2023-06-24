@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, SafeAreaView, Image, ScrollView, ActivityIndicator } from 'react-native';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -77,13 +77,14 @@ const Discover = () => {
             {/* Browse Section */}
             {isLoading ? (
                 <View className="flex-1 items-center justify-center">
-                    <ActivityIndicator size="large" color="#E77587" />
+                    <ActivityIndicator size="large" color="#336699" />
                 </View>
             ) : ( 
                 <>
                     {/* Search results */}
+                    <Text className="text-2xl px-8 mb-4">Explore Japan</Text>
                     <ScrollView horizontal={true}>
-                        <View className=" px-1 mt-8 flex-row items-center justify-evenly">
+                        <View className="px-8 flex-row items-start justify-evenly">
                             {mainData?.length > 0 ? (
                                 <>
                                     {mainData?.map((data, i) => (
@@ -114,30 +115,30 @@ const Discover = () => {
                     </ScrollView>
                                         
                     {/* Categories */}
-                    <Text className="text-2xl px-5">Categories</Text>
-                        <View className="flex-row items-center justify-between px-5 mt-4">
-                            <MenuContainer 
-                                key={"hotels"}
-                                title="Hotels"
-                                imageSrc={HotelIcon}
-                                type={type}
-                                setType={setType}
-                            />
-                            <MenuContainer 
-                                key={"attractions"}
-                                title="Attractions"
-                                imageSrc={AttractionsIcon}
-                                type={type}
-                                setType={setType}
-                            />
-                            <MenuContainer 
-                                key={"restaurants"}
-                                title="Restaurants"
-                                imageSrc={RestaurantsIcon}
-                                type={type}
-                                setType={setType}
-                            />
-                        </View>
+                    <Text className="text-2xl px-8">Categories</Text>
+                    <View className="flex-row items-center justify-between px-8 mt-4">
+                        <MenuContainer 
+                            key={"hotels"}
+                            title="Hotels"
+                            imageSrc={HotelIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"attractions"}
+                            title="Attractions"
+                            imageSrc={AttractionsIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                        <MenuContainer 
+                            key={"restaurants"}
+                            title="Restaurants"
+                            imageSrc={RestaurantsIcon}
+                            type={type}
+                            setType={setType}
+                        />
+                    </View>
                 </>
             )}
         </SafeAreaView>

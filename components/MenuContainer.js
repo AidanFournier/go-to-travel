@@ -25,7 +25,7 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
                     className="w-16 h-16 object-cover"
                 />
             </LinearGradient>
-            <Text className={`text-lg my-1 ${type === title.toLowerCase() ? "text-black" : "text-[#babbbc]" }`}>{title}</Text>
+            <Text className={`text-lg my-1 ${type === title.toLowerCase() ? "text-black" : "text-gray-400" }`}>{title}</Text>
         </TouchableOpacity>
     )
 }
