@@ -80,9 +80,9 @@ const Discover = () => {
                     <ActivityIndicator size="large" color="#E77587" />
                 </View>
             ) : ( 
-                <ScrollView>
-                    <View>
-                        {/* Search results */}
+                <>
+                    {/* Search results */}
+                    <ScrollView horizontal={true}>
                         <View className=" px-1 mt-8 flex-row items-center justify-evenly">
                             {mainData?.length > 0 ? (
                                 <>
@@ -111,35 +111,34 @@ const Discover = () => {
                                 </>
                             )}
                         </View>
-                    </View>
-
+                    </ScrollView>
+                                        
                     {/* Categories */}
                     <Text className="text-2xl px-5">Categories</Text>
-                    <View className="flex-row items-center justify-between px-5 mt-4">
-                        <MenuContainer 
-                            key={"hotels"}
-                            title="Hotels"
-                            imageSrc={HotelIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                        <MenuContainer 
-                            key={"attractions"}
-                            title="Attractions"
-                            imageSrc={AttractionsIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                        <MenuContainer 
-                            key={"restaurants"}
-                            title="Restaurants"
-                            imageSrc={RestaurantsIcon}
-                            type={type}
-                            setType={setType}
-                        />
-                    </View>
-
-                </ScrollView>
+                        <View className="flex-row items-center justify-between px-5 mt-4">
+                            <MenuContainer 
+                                key={"hotels"}
+                                title="Hotels"
+                                imageSrc={HotelIcon}
+                                type={type}
+                                setType={setType}
+                            />
+                            <MenuContainer 
+                                key={"attractions"}
+                                title="Attractions"
+                                imageSrc={AttractionsIcon}
+                                type={type}
+                                setType={setType}
+                            />
+                            <MenuContainer 
+                                key={"restaurants"}
+                                title="Restaurants"
+                                imageSrc={RestaurantsIcon}
+                                type={type}
+                                setType={setType}
+                            />
+                        </View>
+                </>
             )}
         </SafeAreaView>
     );
