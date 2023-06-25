@@ -8,7 +8,7 @@ function StatsContainer({ imageSrc, ratingData, title }) {
                 <Image source={imageSrc} className="w-8 h-8 object-cover"/>
             </View>
             <View>
-                <Text className="text-[#8C9EA6]">{ratingData}</Text>
+                <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="text-[#8C9EA6]">{ratingData}</Text>
                 <Text className="text-[#8C9EA6]">{title}</Text>
             </View>
         </View>
