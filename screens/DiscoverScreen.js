@@ -105,9 +105,9 @@ const Discover = () => {
                                 </> 
                                 ) : (
                                 <>
-                                    <View className="w-full h-[400px] items-center space-y-8 justify-center">
+                                    <View className="w-full h-[200px] items-center space-y-8 justify-center">
                                         <Image source={NotFound} className="w-32 h-32 object-cover" />
-                                        <Text className="text-2xl text-[#336699] font-semibold">Eh! No data found.</Text>
+                                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-2xl">Eh! No data found.</Text>
                                     </View>
                                 </>
                             )}
