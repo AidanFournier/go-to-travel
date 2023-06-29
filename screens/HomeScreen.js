@@ -29,9 +29,9 @@ const HomeScreen = () => {
                 <View className="flex-row items-start justify-center space-x-2 mt-10 relative">
                     <View className="relative">
                         <Image source={WhitePin} className="w-14 h-14 flex absolute -right-0.5 -top-2"/>
-                        <Text className="text-[#336699] mr-2 text-2xl font-medium">Go</Text>
+                        <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-[#336699] mr-2 text-2xl">Go</Text>
                     </View>
-                    <Text className="text-white text-2xl font-medium text-shadow-xl">To Travel</Text>
+                    <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-white text-2xl text-shadow-xl">To Travel</Text>
                 </View>
             </Animatable.View>
 
@@ -42,8 +42,8 @@ const HomeScreen = () => {
                 delay={2000}
                 className="absolute bottom-0 bg-white/75  h-60 w-full rounded-t-[40px] border-solid border-white border-2 flex items-center justify-between p-8">
                 <View className="flex justify-center items-center">
-                    <Text className="text-2xl font-bold text-[#336699]">Explore Japan.</Text>
-                    <Text className="text-2xl font-bold text-[#336699]">At your own pace.</Text>
+                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-2xl text-[#336699]">Explore Japan.</Text>
+                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-2xl text-[#336699]">At your own pace.</Text>
                 </View>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Discover")}
@@ -62,7 +62,7 @@ const HomeScreen = () => {
                             location={[0.25, 0.4, 1]}
                             className="w-full h-16 items-center justify-center rounded-2xl"
                         >
-                            <Text className="text-gray-50 text-2xl font-medium bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Get Started</Text>
+                            <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-gray-50 text-xl bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Get Started</Text>
                         </LinearGradient>
                     </Animatable.View>
                 </TouchableOpacity>

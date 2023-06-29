@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, SafeAreaView, Image, ScrollView, ActivityIndicator } from 'react-native';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
@@ -40,10 +40,10 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
-                    <Text className="text-xl text-black mb-4">Hello
-                        <Text className="text-xl text-black font-bold"> Olivia,</Text>
+                    <Text style={{ fontFamily: 'Inter_300Light'}} className="text-xl mb-4">Hello
+                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-xl"> Olivia,</Text>
                     </Text>
-                    <Text className="text-3xl font-extrabold text-black flex-wrap max-w-[260px]">Where do you want to go today?</Text>
+                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-3xl text-black flex-wrap max-w-[265px]">Where do you want to go today?</Text>
                 </View>
                 <Image source={Avatar} className="w-12 h-12 rounded-full object-cover border-solid border-2 border-white"/>
             </View>
@@ -77,13 +77,14 @@ const Discover = () => {
             {/* Browse Section */}
             {isLoading ? (
                 <View className="flex-1 items-center justify-center">
-                    <ActivityIndicator size="large" color="#E77587" />
+                    <ActivityIndicator size="large" color="#336699" />
                 </View>
             ) : ( 
-                <ScrollView>
-                    <View>
-                        {/* Search results */}
-                        <View className=" px-1 mt-8 flex-row items-center justify-evenly">
+                <>
+                    {/* Search results */}
+                    <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-2xl px-8 mb-4">Explore Japan</Text>
+                    <ScrollView horizontal={true}>
+                        <View className="px-8 flex-row items-start justify-evenly">
                             {mainData?.length > 0 ? (
                                 <>
                                     {mainData?.map((data, i) => (
@@ -104,18 +105,18 @@ const Discover = () => {
                                 </> 
                                 ) : (
                                 <>
-                                    <View className="w-full h-[400px] items-center space-y-8 justify-center">
+                                    <View className="w-full h-[200px] items-center space-y-8 justify-center">
                                         <Image source={NotFound} className="w-32 h-32 object-cover" />
-                                        <Text className="text-2xl text-[#336699] font-semibold">Eh! No data found.</Text>
+                                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-2xl">Eh! No data found.</Text>
                                     </View>
                                 </>
                             )}
                         </View>
-                    </View>
-
+                    </ScrollView>
+                                        
                     {/* Categories */}
-                    <Text className="text-2xl px-5">Categories</Text>
-                    <View className="flex-row items-center justify-between px-5 mt-4">
+                    <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-2xl px-8">Categories</Text>
+                    <View className="flex-row items-center justify-between px-8 mt-4">
                         <MenuContainer 
                             key={"hotels"}
                             title="Hotels"
@@ -138,8 +139,7 @@ const Discover = () => {
                             setType={setType}
                         />
                     </View>
-
-                </ScrollView>
+                </>
             )}
         </SafeAreaView>
     );

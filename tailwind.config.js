@@ -8,10 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      gradientColorStops: theme => ({
-          'primary': '#8AC6D3',
-          'secondary': '#C2E6B1',
-      }),
+      fontFamily: {
+        'inter-black': ['Inter_900Black'],
+      },
   },
   },
   plugins: [],
