@@ -38,11 +38,41 @@ const ItemScreen = ({ route }) => {
   
     return (
         <SafeAreaView className="flex-1 bg-white relative">
-            <ScrollView className="flex-1 px-4 py-6">
+            
+            {/* Background Image */}
+            <Image 
+                source={
+                    {uri: 
+                        data?.photo?.images?.large?.url ?
+                        data?.photo?.images?.large?.url :
+                        "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
+                    }
+                }
+                className="absolute w-full h-4/6"
+            />
+
+            {/* Image Card Buttons */}
+            <View className="absolute flex-row inset-x-0 top-4 justify-between px-4">
+                <TouchableOpacity 
+                    className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
+                    onPress={() => navigation.navigate("Discover")}
+                >
+                    <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
+                    onPress={() => setSaved(!saved)}
+                >
+                    <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
+                </TouchableOpacity>
+            </View>
+            
+            <ScrollView className="flex-1 px-4 py-6 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0">
 
                 {/* Image Card */}
                 <View className="relative bg-white rounded-2xl shadow-lg">
-                    <ImageBackground
+                    {/* <ImageBackground
                         source={
                             {uri: 
                                 data?.photo?.images?.large?.url ?
@@ -58,24 +88,9 @@ const ItemScreen = ({ route }) => {
                             style={{borderRadius: 18}}
                             className="w-full h-72 object-cover"
                         ></LinearGradient>
-                    </ImageBackground>
+                    </ImageBackground> */}
                     
-                    {/* Image Card Buttons */}
-                    <View className="absolute flex-row inset-x-0 top-4 justify-between px-4">
-                        <TouchableOpacity 
-                            className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
-                            onPress={() => navigation.navigate("Discover")}
-                        >
-                            <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
-                            onPress={() => setSaved(!saved)}
-                        >
-                            <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
-                        </TouchableOpacity>
-                    </View>
+                    
 
                     <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
                         {data?.price ?
@@ -246,9 +261,9 @@ const ItemScreen = ({ route }) => {
             </ScrollView>
 
             {/* Call to Action */}
-            <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
+            {/* <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
                 <Text className="text-3xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </SafeAreaView>
     );
 };
