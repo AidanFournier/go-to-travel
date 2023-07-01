@@ -25,7 +25,7 @@ const ItemCardContainer = ({ imageSrc, name, location, data }) => {
 
                             <View className="flex-row items-center space-x-1">
                                 <Image source={GreyPin} className="w-3 h-3 object-cover" />
-                                <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-600 text-sm">
+                                <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-500 text-sm">
                                     {location?.length > 18 ? `${location.slice(0,24)}..` : location}
                                 </Text>
                             </View>

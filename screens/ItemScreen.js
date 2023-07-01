@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin } from '../assets';
 import StatsContainer from '../components/StatsContainer';
 
 const ItemScreen = ({ route }) => {
@@ -52,7 +52,7 @@ const ItemScreen = ({ route }) => {
             />
 
             {/* Image Card Buttons */}
-            <View className="absolute flex-row inset-x-0 top-4 justify-between px-4">
+            <View className="absolute flex-row inset-x-0 top-12 justify-between px-4">
                 <TouchableOpacity 
                     className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
                     onPress={() => navigation.navigate("Discover")}
@@ -68,68 +68,41 @@ const ItemScreen = ({ route }) => {
                 </TouchableOpacity>
             </View>
             
-            <ScrollView className="flex-1 px-4 py-6 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0">
+            {/* Destination Info */}
+            <ScrollView className="flex-1 px-8 pt-8 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0 h-4/6">
+                
+                {/* Title Section */}
+                <View className="flex-row justify-between items-start">
 
-                {/* Image Card */}
-                <View className="relative bg-white rounded-2xl shadow-lg">
-                    {/* <ImageBackground
-                        source={
-                            {uri: 
-                                data?.photo?.images?.large?.url ?
-                                data?.photo?.images?.large?.url :
-                                "https://res.cloudinary.com/diyvlobep/image/upload/v1680617719/restaurant-default_ml2fb9.png"
-                            }
-                        }
-                        imageStyle={{ borderRadius: 18}}
-                        className="w-full h-72 object-cover rounded-2xl"
-                    >
-                        <LinearGradient
-                            colors={[ 'rgba(255,255,255,0)', 'rgba(0,0,0,0.7)']}
-                            style={{borderRadius: 18}}
-                            className="w-full h-72 object-cover"
-                        ></LinearGradient>
-                    </ImageBackground> */}
-                    
-                    
+                    {/* Name and Location */}
+                    <View className="w-8/12">
+                        <View className="">
+                            <Text className="text-2xl font-semibold flex-wrap">
+                                {data?.name}
+                            </Text>
+                        </View>
 
-                    <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
-                        {data?.price ?
-                            <View className="flex-column items-start">
-                                <Text className="text-[24px] font-bold text-gray-100">
-                                    {data?.price} 
-                                </Text>
-                                <Text className="text-gray-100">/ per person</Text>
-                            </View>
-                        : <></>}
+                        <View className="flex-row items-center space-x-2 mt-3">
+                            <Image source={BluePin} className="w-4 h-4 object-cover" />
+                            <Text className="text-gray-400">
+                                {data?.ranking_geo}
+                            </Text>
+                        </View>
                     </View>
 
-                    {/* Open/Closed Sign */}
+                    {/* Open/Closed Label */}
                     {data?.open_now_text && 
-                        <View className="absolute px-2 py-2 placeholder:rounded-md shadow-sm bg-white items-center justify-center mr-2 right-0 -bottom-14">
+                        <View className="pt-1">
                             {data?.open_now_text === "Open Now" ? 
-                                <Text className="text-[#336699] font-bold px-2">{data?.open_now_text}</Text>
+                                <Text className="text-[#336699]">{data?.open_now_text}</Text>
                                 :
-                                <Text className="text-[#E77587] font-bold px-2">{data?.open_now_text}</Text>
+                                <Text className="text-gray-400">{data?.open_now_text}</Text>
                             }
                         </View>
                     }
                 </View>
-
-                {/* Name and Location */}
-                <View className="mt-6 px-2">
-                    <View className="flex-row justify-between">
-                        <Text className="text-[#336699] text-[24px] mr-36 font-bold pb-1 flex-wrap">
-                            {data?.name}
-                        </Text>
-                    </View>
-
-                    <View className="flex-row items-center space-x-1 mt-2">
-                        <FontAwesome5 name="map-marker-alt" size={16} color="#8C9EA6" />
-                        <Text className="text-[#8C9EA6] text-[16px] font-bold">
-                            {data?.ranking_geo}
-                        </Text>
-                    </View>
-                </View>
+ 
+                    
 
                 {/* Place Stats */}
                 <View className="mt-4 flex-row items-center justify-between">
@@ -259,6 +232,17 @@ const ItemScreen = ({ route }) => {
                 </View>
 
             </ScrollView>
+
+            {/* <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
+                {data?.price ?
+                    <View className="flex-column items-start">
+                        <Text className="text-[24px] font-bold text-gray-500">
+                            {data?.price} 
+                        </Text>
+                        <Text className="text-gray-500">/ per person</Text>
+                    </View>
+                : <></>}
+            </View> */}
 
             {/* Call to Action */}
             {/* <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
