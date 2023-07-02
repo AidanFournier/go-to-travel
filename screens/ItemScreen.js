@@ -72,15 +72,13 @@ const ItemScreen = ({ route }) => {
             <ScrollView className="flex-1 px-8 pt-8 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0 h-4/6">
                 
                 {/* Title Section */}
-                <View className="flex-row justify-between items-start">
+                <View className="flex-row justify-between items-center">
 
                     {/* Name and Location */}
                     <View className="w-8/12">
-                        <View className="">
-                            <Text className="text-2xl font-semibold flex-wrap">
-                                {data?.name}
-                            </Text>
-                        </View>
+                        <Text className="text-2xl font-semibold flex-wrap">
+                            {data?.name}
+                        </Text>
 
                         <View className="flex-row items-center space-x-2 mt-3">
                             <Image source={BluePin} className="w-4 h-4 object-cover" />
@@ -90,22 +88,53 @@ const ItemScreen = ({ route }) => {
                         </View>
                     </View>
 
-                    {/* Open/Closed Label */}
-                    {data?.open_now_text && 
-                        <View className="pt-1">
-                            {data?.open_now_text === "Open Now" ? 
-                                <Text className="text-[#336699]">{data?.open_now_text}</Text>
-                                :
-                                <Text className="text-gray-400">{data?.open_now_text}</Text>
-                            }
+                    <View>
+                        {/* Open/Closed Label */}
+                        {data?.open_now_text && 
+                            <View className="pt-1">
+                                {data?.open_now_text === "Open Now" ? 
+                                    <Text className="text-[#336699]">{data?.open_now_text}</Text>
+                                    :
+                                    <Text className="text-gray-400">{data?.open_now_text}</Text>
+                                }
+                            </View>
+                        }
+                        {/* Rating */}
+                        <View className="flex-row items-center justify-end space-x-1 mt-3">
+                            <Image source={GreyStar} className="w-4 h-4 object-cover" />
+                            <Text className="text-gray-400 text-right">
+                                {data?.rating}
+                            </Text>
                         </View>
-                    }
+                    </View>
                 </View>
  
-                    
+                {/* Description */}
+                {data?.description && (
+                    <Text className="mt-5">
+                        <Text className="tracking-wide text-gray-400">
+                            {text}
+                            {!readMore && '...'}
+                        </Text>
+                        <Text
+                            className="mt-2 text-[#336699]"
+                            onPress={() => {
+                                if(!readMore) {
+                                    setText(data.description);
+                                    setReadMore(true);
+                                } else {
+                                    setText(data.description.slice(0, 180));
+                                    setReadMore(false);
+                                }
+                            }}
+                        >
+                            {readMore ? ' Show Less' : ' Read More'}
+                        </Text>
+                    </Text>
+                )}
 
                 {/* Place Stats */}
-                <View className="mt-4 flex-row items-center justify-between">
+                {/* <View className="mt-4 flex-row items-center justify-between">
                    {data?.rating ? 
                         (
                             <StatsContainer 
@@ -159,31 +188,8 @@ const ItemScreen = ({ route }) => {
                             />
                         )
                     }
-                </View>
+                </View> */}
 
-                {/* Description */}
-                {data?.description && (
-                    <>
-                        <Text className="mt-4 tracking-wide text-[16px] font-semibold text-[#8C9EA6] px-2">
-                            {text}
-                            {!readMore && '...'}
-                        </Text>
-                        <Text
-                            className="mt-2 text-[16px] font-semibold text-[#336699] px-1"
-                            onPress={() => {
-                                if(!readMore) {
-                                    setText(data.description);
-                                    setReadMore(true);
-                                } else {
-                                    setText(data.description.slice(0, 180));
-                                    setReadMore(false);
-                                }
-                            }}
-                        >
-                            {readMore ? ' Show Less' : ' Read More'}
-                        </Text>
-                    </>
-                )}
                 
                 {/* Cuisine Tags */}
                 {data?.cuisine && (
