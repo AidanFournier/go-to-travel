@@ -206,7 +206,7 @@ const ItemScreen = ({ route }) => {
                 )}
 
                 {/* Contact Info */}
-                <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
+                {/* <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
                     {data?.phone && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Phone} className="w-8 h-8 object-cover"/>
@@ -235,7 +235,7 @@ const ItemScreen = ({ route }) => {
                             <Text className="text-[#336699] text-[16px] mr-5 flex-wrap" onPress={()=>{Linking.openURL(`${data?.website}`);}}>{data?.website}</Text>
                         </View>
                     )}
-                </View>
+                </View> */}
 
             </ScrollView>
 
