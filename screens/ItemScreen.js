@@ -238,22 +238,41 @@ const ItemScreen = ({ route }) => {
                 </View> */}
 
             </ScrollView>
+            
+            <View className="items-center absolute flex-row inset-x-0 bottom-5 justify-between">
+                <View className="">
+                    {data?.price ?
+                        <View className="flex-column items-start">
+                            <Text className="font-bold text-gray-400 text-xl">
+                                {data?.price} 
+                            </Text>
+                            <Text className="text-gray-400">/ per person</Text>
+                        </View>
+                    : <></>}
+                </View>
 
-            {/* <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
-                {data?.price ?
-                    <View className="flex-column items-start">
-                        <Text className="text-[24px] font-bold text-gray-500">
-                            {data?.price} 
-                        </Text>
-                        <Text className="text-gray-500">/ per person</Text>
+                {/* Call to Action */}
+                {/* <TouchableOpacity className="absolute flex-row inset-x-0 bottom-5 px-4 py-4 rounded-full bg-[#336699] items-center justify-center">
+                    <Text className="text-2xl font-semibold tracking-wider text-gray-100">Book Now</Text>
+                </TouchableOpacity> */}
+
+                <TouchableOpacity
+                    onPress={()=>{Linking.openURL(`${data?.website}`);}}
+                    className="w-8/12"
+                    >
+                    <View className="w-full h-16 rounded-full">
+                        <LinearGradient
+                            colors={["#2CADCC", "#336699"]}
+                            start={[0, 0]}
+                            end={[1, 1]}
+                            location={[0.25, 0.4, 1]}
+                            className="w-full h-16 items-center justify-center rounded-full"
+                        >
+                            <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-white text-xl bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Book Now</Text>
+                        </LinearGradient>
                     </View>
-                : <></>}
-            </View> */}
-
-            {/* Call to Action */}
-            {/* <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
-                <Text className="text-3xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-            </TouchableOpacity> */}
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };

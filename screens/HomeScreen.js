@@ -53,14 +53,14 @@ const HomeScreen = () => {
                         animation={"pulse"}
                         easing="ease-in-out"
                         iterationCount={"infinite"}
-                        className="w-full h-16 rounded-2xl"
+                        className="w-full h-16 rounded-full"
                     >
                         <LinearGradient 
                             colors={["#2CADCC", "#336699"]}
                             start={[0, 0]}
                             end={[1, 1]}
                             location={[0.25, 0.4, 1]}
-                            className="w-full h-16 items-center justify-center rounded-2xl"
+                            className="w-full h-16 items-center justify-center rounded-full"
                         >
                             <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-gray-50 text-xl bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Get Started</Text>
                         </LinearGradient>
