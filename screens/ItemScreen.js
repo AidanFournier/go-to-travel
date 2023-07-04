@@ -72,17 +72,17 @@ const ItemScreen = ({ route }) => {
             <ScrollView className="flex-1 px-8 pt-8 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0 h-4/6">
                 
                 {/* Title Section */}
-                <View className="flex-row justify-between items-center">
+                <View className="flex-row justify-between items-start">
 
                     {/* Name and Location */}
                     <View className="w-8/12">
-                        <Text className="text-2xl font-semibold flex-wrap">
+                        <Text style={{ fontFamily: 'Inter_500SemiBold'}} className="text-2xl font-semibold flex-wrap">
                             {data?.name}
                         </Text>
 
-                        <View className="flex-row items-center space-x-2 mt-3">
+                        <View className="flex-row items-center space-x-2 mt-3 mb-6">
                             <Image source={BluePin} className="w-4 h-4 object-cover" />
-                            <Text className="text-gray-400">
+                            <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-400">
                                 {data?.ranking_geo}
                             </Text>
                         </View>
@@ -93,30 +93,45 @@ const ItemScreen = ({ route }) => {
                         {data?.open_now_text && 
                             <View className="pt-1">
                                 {data?.open_now_text === "Open Now" ? 
-                                    <Text className="text-[#336699]">{data?.open_now_text}</Text>
+                                    <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-[#336699]">{data?.open_now_text}</Text>
                                     :
-                                    <Text className="text-gray-400">{data?.open_now_text}</Text>
+                                    <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-400">{data?.open_now_text}</Text>
                                 }
                             </View>
                         }
                         {/* Rating */}
                         <View className="flex-row items-center justify-end space-x-1 mt-3">
                             <Image source={GreyStar} className="w-4 h-4 object-cover" />
-                            <Text className="text-gray-400 text-right">
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400 text-right">
                                 {data?.rating}
                             </Text>
                         </View>
                     </View>
                 </View>
+
+                {/* Cuisine Tags */}
+                {data?.cuisine && (
+                    <View className="flex-row gap-2 items-center justify-start flex-wrap mb-2">
+                        {data?.cuisine.map((cuisine) => (
+                            <TouchableOpacity
+                                key={cuisine.key}
+                                className="px-2 py-1 rounded-full bg-gray-300"
+                            >
+                                <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-white">{cuisine.name}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                )}
  
                 {/* Description */}
                 {data?.description && (
-                    <Text className="mt-5">
-                        <Text className="tracking-wide text-gray-400">
+                    <Text>
+                        <Text style={{ fontFamily: 'Inter_400Regular'}} className="tracking-wide text-gray-400">
                             {text}
                             {!readMore && '...'}
                         </Text>
                         <Text
+                            style={{ fontFamily: 'Inter_400Regular'}}
                             className="mt-2 text-[#336699]"
                             onPress={() => {
                                 if(!readMore) {
@@ -190,23 +205,9 @@ const ItemScreen = ({ route }) => {
                     }
                 </View> */}
 
-                
-                {/* Cuisine Tags */}
-                {data?.cuisine && (
-                    <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4 px-2">
-                        {data?.cuisine.map((cuisine) => (
-                            <TouchableOpacity
-                                key={cuisine.key}
-                                className="px-2 py-1 rounded-md bg-[#8C9EA6]"
-                            >
-                                <Text className="text-white">{cuisine.name}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                )}
 
                 {/* Contact Info */}
-                <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
+                {/* <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
                     {data?.phone && (
                         <View className="flex-row items-center space-x-6">
                             <Image source={Phone} className="w-8 h-8 object-cover"/>
@@ -235,25 +236,44 @@ const ItemScreen = ({ route }) => {
                             <Text className="text-[#336699] text-[16px] mr-5 flex-wrap" onPress={()=>{Linking.openURL(`${data?.website}`);}}>{data?.website}</Text>
                         </View>
                     )}
-                </View>
+                </View> */}
 
             </ScrollView>
+            
+            <View className="items-center absolute flex-row inset-x-0 bottom-5 justify-between">
+                <View className="">
+                    {data?.price ?
+                        <View className="flex-column items-start">
+                            <Text style={{ fontFamily: 'Inter_700Bold'}}  className="font-bold text-gray-400 text-xl">
+                                {data?.price} 
+                            </Text>
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ per person</Text>
+                        </View>
+                    : <></>}
+                </View>
 
-            {/* <View className="absolute flex-row inset-x-0 bottom-5 justify-between px-6">
-                {data?.price ?
-                    <View className="flex-column items-start">
-                        <Text className="text-[24px] font-bold text-gray-500">
-                            {data?.price} 
-                        </Text>
-                        <Text className="text-gray-500">/ per person</Text>
+                {/* Call to Action */}
+                {/* <TouchableOpacity className="absolute flex-row inset-x-0 bottom-5 px-4 py-4 rounded-full bg-[#336699] items-center justify-center">
+                    <Text className="text-2xl font-semibold tracking-wider text-gray-100">Book Now</Text>
+                </TouchableOpacity> */}
+
+                <TouchableOpacity
+                    onPress={()=>{Linking.openURL(`${data?.website}`);}}
+                    className="w-8/12"
+                    >
+                    <View className="w-full h-16 rounded-full">
+                        <LinearGradient
+                            colors={["#2CADCC", "#336699"]}
+                            start={[0, 0]}
+                            end={[1, 1]}
+                            location={[0.25, 0.4, 1]}
+                            className="w-full h-16 items-center justify-center rounded-full"
+                        >
+                            <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-white text-xl bg-gradient-to-tr from-[#5CA7F1] from-10% to-[#336699] to-90%">Book Now</Text>
+                        </LinearGradient>
                     </View>
-                : <></>}
-            </View> */}
-
-            {/* Call to Action */}
-            {/* <TouchableOpacity className="mx-6 px-4 py-4 rounded-xl bg-[#336699] items-center justify-center">
-                <Text className="text-3xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-            </TouchableOpacity> */}
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
