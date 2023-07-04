@@ -76,13 +76,13 @@ const ItemScreen = ({ route }) => {
 
                     {/* Name and Location */}
                     <View className="w-8/12">
-                        <Text className="text-2xl font-semibold flex-wrap">
+                        <Text style={{ fontFamily: 'Inter_500SemiBold'}} className="text-2xl font-semibold flex-wrap">
                             {data?.name}
                         </Text>
 
                         <View className="flex-row items-center space-x-2 mt-3 mb-6">
                             <Image source={BluePin} className="w-4 h-4 object-cover" />
-                            <Text className="text-gray-400">
+                            <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-400">
                                 {data?.ranking_geo}
                             </Text>
                         </View>
@@ -93,16 +93,16 @@ const ItemScreen = ({ route }) => {
                         {data?.open_now_text && 
                             <View className="pt-1">
                                 {data?.open_now_text === "Open Now" ? 
-                                    <Text className="text-[#336699]">{data?.open_now_text}</Text>
+                                    <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-[#336699]">{data?.open_now_text}</Text>
                                     :
-                                    <Text className="text-gray-400">{data?.open_now_text}</Text>
+                                    <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-400">{data?.open_now_text}</Text>
                                 }
                             </View>
                         }
                         {/* Rating */}
                         <View className="flex-row items-center justify-end space-x-1 mt-3">
                             <Image source={GreyStar} className="w-4 h-4 object-cover" />
-                            <Text className="text-gray-400 text-right">
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400 text-right">
                                 {data?.rating}
                             </Text>
                         </View>
@@ -117,7 +117,7 @@ const ItemScreen = ({ route }) => {
                                 key={cuisine.key}
                                 className="px-2 py-1 rounded-full bg-gray-300"
                             >
-                                <Text className="text-white">{cuisine.name}</Text>
+                                <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-white">{cuisine.name}</Text>
                             </TouchableOpacity>
                         ))}
                     </View>
@@ -126,11 +126,12 @@ const ItemScreen = ({ route }) => {
                 {/* Description */}
                 {data?.description && (
                     <Text>
-                        <Text className="tracking-wide text-gray-400">
+                        <Text style={{ fontFamily: 'Inter_400Regular'}} className="tracking-wide text-gray-400">
                             {text}
                             {!readMore && '...'}
                         </Text>
                         <Text
+                            style={{ fontFamily: 'Inter_400Regular'}}
                             className="mt-2 text-[#336699]"
                             onPress={() => {
                                 if(!readMore) {
@@ -243,10 +244,10 @@ const ItemScreen = ({ route }) => {
                 <View className="">
                     {data?.price ?
                         <View className="flex-column items-start">
-                            <Text className="font-bold text-gray-400 text-xl">
+                            <Text style={{ fontFamily: 'Inter_700Bold'}}  className="font-bold text-gray-400 text-xl">
                                 {data?.price} 
                             </Text>
-                            <Text className="text-gray-400">/ per person</Text>
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ per person</Text>
                         </View>
                     : <></>}
                 </View>
