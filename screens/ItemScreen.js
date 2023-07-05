@@ -173,9 +173,15 @@ const ItemScreen = ({ route }) => {
                             image={BluePinSmall}
                             title={data?.name}
                             description={data?.address}
-                            className="h-12"
                         >
-                            <Callout></Callout>
+                            <Callout tooltip>
+                                <View>
+                                    <View className="flex bg-white/70 rounded-2xl px-4 py-3">
+                                        <Text className="font-semibold mb-1">{data?.name}</Text>
+                                        <Text>{data?.address}</Text>
+                                    </View>
+                                </View>
+                            </Callout>
                         </Marker>
                     </MapView>
 
