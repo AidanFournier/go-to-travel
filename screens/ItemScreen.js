@@ -184,7 +184,6 @@ const ItemScreen = ({ route }) => {
                             </Callout>
                         </Marker>
                     </MapView>
-
                 </View>
 
                 {/* Place Stats */}
@@ -273,7 +272,7 @@ const ItemScreen = ({ route }) => {
 
             </ScrollView>
             
-            <View className="items-center absolute flex-row inset-x-0 bottom-6 justify-around px-4">
+            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-around px-4 bg-white/70 pt-3 pb-6">
                 <View className="">
                     {data?.price ?
                         <View className="flex-column items-center justify-center">
