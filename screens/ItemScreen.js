@@ -3,14 +3,16 @@ import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import MapView, { Marker, Callout } from 'react-native-maps';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin, BluePinSmall } from '../assets';
 import StatsContainer from '../components/StatsContainer';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
 
     const data = route?.params?.param;
+    console.log(data);
 
     const [ text, setText ] = useState(data.description.slice(0, 180));
     const [ readMore, setReadMore ] = useState(false);
@@ -76,7 +78,7 @@ const ItemScreen = ({ route }) => {
 
                     {/* Name and Location */}
                     <View className="w-8/12">
-                        <Text style={{ fontFamily: 'Inter_500SemiBold'}} className="text-2xl font-semibold flex-wrap">
+                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-2xl font-semibold flex-wrap">
                             {data?.name}
                         </Text>
 
@@ -147,6 +149,42 @@ const ItemScreen = ({ route }) => {
                         </Text>
                     </Text>
                 )}
+
+                {/* Map */}
+                <View className="mt-8 rounded-3xl h-full w-full overflow-hidden flex items-center justify-center">
+                    <MapView
+                        className="rounded-3xl h-full w-full"
+                        initialRegion={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        }}
+                    >
+                        <Marker
+                            draggable
+                            coordinate={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            }}
+                            onDragEnd={
+                            (e) => alert(JSON.stringify(e.nativeEvent.coordinate))
+                            }
+                            image={BluePinSmall}
+                            title={data?.name}
+                            description={data?.address}
+                        >
+                            <Callout tooltip>
+                                <View>
+                                    <View className="flex bg-white/70 rounded-2xl px-4 py-3">
+                                        <Text className="font-semibold mb-1">{data?.name}</Text>
+                                        <Text>{data?.address}</Text>
+                                    </View>
+                                </View>
+                            </Callout>
+                        </Marker>
+                    </MapView>
+                </View>
 
                 {/* Place Stats */}
                 {/* <View className="mt-4 flex-row items-center justify-between">
@@ -230,33 +268,27 @@ const ItemScreen = ({ route }) => {
                             </TouchableOpacity>
                         </View>
                     )}
-                    {data?.website && (
-                        <View className="flex-row items-center space-x-6">
-                            <Image source={Link} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-[16px] mr-5 flex-wrap" onPress={()=>{Linking.openURL(`${data?.website}`);}}>{data?.website}</Text>
-                        </View>
-                    )}
                 </View> */}
 
             </ScrollView>
             
-            <View className="items-center absolute flex-row inset-x-0 bottom-5 justify-between">
+            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-around px-4 bg-white/70 pt-3 pb-6">
                 <View className="">
                     {data?.price ?
-                        <View className="flex-column items-start">
-                            <Text style={{ fontFamily: 'Inter_700Bold'}}  className="font-bold text-gray-400 text-xl">
-                                {data?.price} 
+                        <View className="flex-column items-center justify-center">
+                            <Text>
+                                <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl text-[#336699]">¥</Text>
+                                <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl">
+                                    {data?.price.slice(1, 3) + "00"}
+                                </Text>
                             </Text>
-                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ per person</Text>
+                            
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ person</Text>
                         </View>
                     : <></>}
                 </View>
 
-                {/* Call to Action */}
-                {/* <TouchableOpacity className="absolute flex-row inset-x-0 bottom-5 px-4 py-4 rounded-full bg-[#336699] items-center justify-center">
-                    <Text className="text-2xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-                </TouchableOpacity> */}
-
+                {/* Footer (price/person and CTA button) */}
                 <TouchableOpacity
                     onPress={()=>{Linking.openURL(`${data?.website}`);}}
                     className="w-8/12"
