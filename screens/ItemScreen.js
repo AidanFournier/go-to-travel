@@ -3,14 +3,16 @@ import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import MapView, { Marker, Callout } from 'react-native-maps';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin, BluePinSmall } from '../assets';
 import StatsContainer from '../components/StatsContainer';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
 
     const data = route?.params?.param;
+    console.log(data);
 
     const [ text, setText ] = useState(data.description.slice(0, 180));
     const [ readMore, setReadMore ] = useState(false);
@@ -148,6 +150,37 @@ const ItemScreen = ({ route }) => {
                     </Text>
                 )}
 
+                {/* Map */}
+                <View className="rounded-3xl h-full w-full overflow-hidden">
+                    <MapView
+                        className="mt-8 flex-1 justify-center items-center rounded-3xl overflow-hidden"
+                        initialRegion={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        }}
+                    >
+                        <Marker
+                            draggable
+                            coordinate={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            }}
+                            onDragEnd={
+                            (e) => alert(JSON.stringify(e.nativeEvent.coordinate))
+                            }
+                            image={BluePinSmall}
+                            title={data?.name}
+                            description={data?.address}
+                            className="h-12"
+                        >
+                            <Callout></Callout>
+                        </Marker>
+                    </MapView>
+
+                </View>
+
                 {/* Place Stats */}
                 {/* <View className="mt-4 flex-row items-center justify-between">
                    {data?.rating ? 
@@ -230,12 +263,6 @@ const ItemScreen = ({ route }) => {
                             </TouchableOpacity>
                         </View>
                     )}
-                    {data?.website && (
-                        <View className="flex-row items-center space-x-6">
-                            <Image source={Link} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-[16px] mr-5 flex-wrap" onPress={()=>{Linking.openURL(`${data?.website}`);}}>{data?.website}</Text>
-                        </View>
-                    )}
                 </View> */}
 
             </ScrollView>
@@ -256,11 +283,7 @@ const ItemScreen = ({ route }) => {
                     : <></>}
                 </View>
 
-                {/* Call to Action */}
-                {/* <TouchableOpacity className="absolute flex-row inset-x-0 bottom-5 px-4 py-4 rounded-full bg-[#336699] items-center justify-center">
-                    <Text className="text-2xl font-semibold tracking-wider text-gray-100">Book Now</Text>
-                </TouchableOpacity> */}
-
+                {/* Footer (price/person and CTA button) */}
                 <TouchableOpacity
                     onPress={()=>{Linking.openURL(`${data?.website}`);}}
                     className="w-8/12"
