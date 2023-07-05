@@ -151,9 +151,9 @@ const ItemScreen = ({ route }) => {
                 )}
 
                 {/* Map */}
-                <View className="rounded-3xl h-full w-full overflow-hidden">
+                <View className="mt-8 rounded-3xl h-full w-full overflow-hidden flex items-center justify-center">
                     <MapView
-                        className="mt-8 flex-1 justify-center items-center rounded-3xl overflow-hidden"
+                        className="rounded-3xl h-full w-full"
                         initialRegion={{
                             latitude: data?.latitude,
                             longitude: data?.longitude,
