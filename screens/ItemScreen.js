@@ -76,7 +76,7 @@ const ItemScreen = ({ route }) => {
 
                     {/* Name and Location */}
                     <View className="w-8/12">
-                        <Text style={{ fontFamily: 'Inter_500SemiBold'}} className="text-2xl font-semibold flex-wrap">
+                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-2xl font-semibold flex-wrap">
                             {data?.name}
                         </Text>
 
@@ -240,14 +240,18 @@ const ItemScreen = ({ route }) => {
 
             </ScrollView>
             
-            <View className="items-center absolute flex-row inset-x-0 bottom-5 justify-between">
+            <View className="items-center absolute flex-row inset-x-0 bottom-6 justify-around px-4">
                 <View className="">
                     {data?.price ?
-                        <View className="flex-column items-start">
-                            <Text style={{ fontFamily: 'Inter_700Bold'}}  className="font-bold text-gray-400 text-xl">
-                                {data?.price} 
+                        <View className="flex-column items-center justify-center">
+                            <Text>
+                                <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl text-[#336699]">¥</Text>
+                                <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl">
+                                    {data?.price.slice(1, 3) + "00"}
+                                </Text>
                             </Text>
-                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ per person</Text>
+                            
+                            <Text style={{ fontFamily: 'Inter_400Regular'}}  className="text-gray-400">/ person</Text>
                         </View>
                     : <></>}
                 </View>
