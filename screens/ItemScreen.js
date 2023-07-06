@@ -5,7 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import MapView, { Marker, Callout } from 'react-native-maps';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin, BluePinSmall } from '../assets';
+import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin, BluePinSmall, BluePinNavi } from '../assets';
 import StatsContainer from '../components/StatsContainer';
 
 const ItemScreen = ({ route }) => {
@@ -83,7 +83,7 @@ const ItemScreen = ({ route }) => {
                         </Text>
 
                         <View className="flex-row items-center space-x-2 mt-3 mb-6">
-                            <Image source={BluePin} className="w-4 h-4 object-cover" />
+                            <Image source={BluePin} className="w-5 h-5 object-cover" />
                             <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-400">
                                 {data?.ranking_geo}
                             </Text>
@@ -151,7 +151,8 @@ const ItemScreen = ({ route }) => {
                 )}
 
                 {data?.address && (
-                    <View className="mt-4 mb-3">
+                    <View className="mt-5 mb-3 flex-row space-x-2">
+                        <Image source={BluePinNavi} className="w-4 h-5 object-cover" />
                         <TouchableOpacity onPress={() => openMap()}>
                             <Text className="text-[#336699] font-semibold">
                                 Get Directions
