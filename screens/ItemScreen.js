@@ -150,8 +150,18 @@ const ItemScreen = ({ route }) => {
                     </Text>
                 )}
 
+                {data?.address && (
+                    <View className="mt-4 mb-3">
+                        <TouchableOpacity onPress={() => openMap()}>
+                            <Text className="text-[#336699] font-semibold">
+                                Get Directions
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
+
                 {/* Map */}
-                <View className="mt-8 rounded-3xl h-full w-full overflow-hidden flex items-center justify-center">
+                <View className="rounded-3xl h-full w-full overflow-hidden flex items-center justify-center">
                     <MapView
                         className="rounded-3xl h-full w-full"
                         initialRegion={{
