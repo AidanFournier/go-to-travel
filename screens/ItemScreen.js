@@ -283,10 +283,10 @@ const ItemScreen = ({ route }) => {
 
             </ScrollView>
             
-            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-around px-4 bg-white/70 pt-3 pb-6">
+            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-center px-4 bg-white/70 pt-3 pb-6">
                 <View className="">
                     {data?.price ?
-                        <View className="flex-column items-center justify-center">
+                        <View className="flex-column items-center justify-center pr-6">
                             <Text>
                                 <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl text-[#336699]">¥</Text>
                                 <Text style={{ fontFamily: 'Inter_600SemiBold'}}  className="font-bold text-xl">
