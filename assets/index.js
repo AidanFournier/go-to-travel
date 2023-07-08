@@ -26,3 +26,4 @@ export { default as WhitePin} from "./pin-white.png";
 export { default as GreyPin} from "./pin-grey.png";
 export { default as BluePin} from "./pin-blue.png";
 export { default as BluePinSmall} from "./pin-blue-small.png";
+export { default as BluePinNavi} from "./pin-blue-navi.png";
