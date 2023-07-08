@@ -1,12 +1,10 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ImageBackground, Linking, Platform } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import MapView, { Marker, Callout } from 'react-native-maps';
 
-import { BlueStar, ChevronLeftWhite, Email, GreyStar, Link, Map, Medal, MedalGray, Phone, PriceTag, PriceTagGrey, WhiteHeart, PinkHeart, BluePin, BluePinSmall, BluePinNavi, GreyPin } from '../assets';
-import StatsContainer from '../components/StatsContainer';
+import { ChevronLeftWhite, GreyStar, WhiteHeart, PinkHeart, BluePinSmall, BluePinNavi, GreyPin } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
@@ -71,7 +69,7 @@ const ItemScreen = ({ route }) => {
             </View>
             
             {/* Destination Info */}
-            <ScrollView className="flex-1 px-8 pt-8 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0 h-4/6">
+            <ScrollView className="flex-1 bg-white rounded-t-[40px] shadow-2xl absolute inset-x-0 bottom-0 h-4/6 overflow-hidden px-8 pt-8">
                 
                 {/* Title Section */}
                 <View className="flex-row justify-between items-start">
@@ -196,94 +194,10 @@ const ItemScreen = ({ route }) => {
                         </Marker>
                     </MapView>
                 </View>
-
-                {/* Place Stats */}
-                {/* <View className="mt-4 flex-row items-center justify-between">
-                   {data?.rating ? 
-                        (
-                            <StatsContainer 
-                                key={"Rating"}
-                                imageSrc={BlueStar}
-                                ratingData={data?.rating}
-                                title={"Rating"}
-                            />
-                        ) : (
-                            <StatsContainer
-                                key={"Rating"}
-                                imageSrc={GreyStar}
-                                ratingData={"No"}
-                                title={"Rating"}
-                            />
-                        )
-                    }
-
-                    {data?.ranking ? 
-                        (
-                            <StatsContainer 
-                                key={"Ranking"}
-                                imageSrc={Medal}
-                                ratingData={`#${data?.ranking_position} in`}
-                                title={data?.ranking_geo.length > 9 ? `${data?.ranking_geo.slice(0,7)}..` : data?.ranking_geo}
-                            />
-                        ) : (
-                            <StatsContainer
-                                key={"Ranking"}
-                                imageSrc={MedalGray}
-                                ratingData={"No Rank"}
-                                title={"Found"}
-                            />
-                        )
-                    }
-
-                    {data?.price_level ? 
-                        (
-                            <StatsContainer 
-                                key={"Pricing"}
-                                imageSrc={PriceTag}
-                                ratingData={data?.price_level}
-                                title={"Price Range"}
-                            />
-                        ) : (
-                            <StatsContainer
-                                key={"Pricing"}
-                                imageSrc={PriceTagGrey}
-                                ratingData={"No Price"}
-                                title={"Info Found"}
-                            />
-                        )
-                    }
-                </View> */}
-
-
-                {/* Contact Info */}
-                {/* <View className="px-4 py-2 space-y-2 mt-4 bg-gray-100 rounded-2xl mb-12">
-                    {data?.phone && (
-                        <View className="flex-row items-center space-x-6">
-                            <Image source={Phone} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-[16px] mr-2 flex-wrap" onPress={()=>{Linking.openURL(`tel:${data?.phone}`);}}>{data?.phone}</Text>
-                        </View>
-                    )}
-                    {data?.email && (
-                        <View className="flex-row items-center space-x-6">
-                            <Image source={Email} className="w-8 h-8 object-cover"/>
-                            <Text className="text-[#336699] text-[16px] mr-4 flex-wrap" onPress={()=>{Linking.openURL(`mailto:${data?.email}`);}}>{data?.email}</Text>
-                        </View>
-                    )}
-                    {data?.address && (
-                        <View className="flex-row items-center space-x-6">
-                            <Image source={Map} className="w-8 h-8 object-cover"/>
-                            <TouchableOpacity onPress={() => openMap()}>
-                                <Text className="text-[#336699] text-[16px] mr-5 flex-wrap">
-                                    {data?.address}
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                    )}
-                </View> */}
-
             </ScrollView>
-            
-            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-center px-4 bg-white/70 pt-3 pb-6">
+
+            {/* Footer (price/person and CTA button) */}
+            <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-center px-4 bg-white/70 pt-3 pb-5">
                 <View className="">
                     {data?.price ?
                         <View className="flex-column items-center justify-center pr-6">
@@ -298,8 +212,7 @@ const ItemScreen = ({ route }) => {
                         </View>
                     : <></>}
                 </View>
-
-                {/* Footer (price/person and CTA button) */}
+                
                 <TouchableOpacity
                     onPress={()=>{Linking.openURL(`${data?.website}`);}}
                     className="w-8/12"
