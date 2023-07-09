@@ -1,27 +1,29 @@
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, Linking, Button } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MapView, { Marker, Callout } from 'react-native-maps';
+import Modal from "react-native-modal";
 
 import { ChevronLeftWhite, GreyStar, WhiteHeart, PinkHeart, BluePinSmall, BluePinNavi, GreyPin } from '../assets';
 
 const ItemScreen = ({ route }) => {
     const navigation = useNavigation();
 
-    const data = route?.params?.param;
-    console.log(data);
-
-    const [ text, setText ] = useState(data.description.slice(0, 180));
-    const [ readMore, setReadMore ] = useState(false);
-
-    const [ saved, setSaved ] = useState(false);
-
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, []);
+
+    const data = route?.params?.param;
+
+    const [ text, setText ] = useState(data.description.slice(0, 180));
+    const [ readMore, setReadMore ] = useState(false);
+    const [ saved, setSaved ] = useState(false);
+    const [ isModalVisible, setIsModalVisible ] = useState(false);
+
+    const handleModal = () => setIsModalVisible(() => !isModalVisible);
 
     const openMap = async (address=data?.address, city=data?.address_obj.city, zipCode=data?.address_obj.postalcode) => {
         const destination = encodeURIComponent(`${address}`);
@@ -169,6 +171,7 @@ const ItemScreen = ({ route }) => {
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
+                        onPress={handleModal} 
                     >
                         <Marker
                             draggable
@@ -195,6 +198,57 @@ const ItemScreen = ({ route }) => {
                     </MapView>
                 </View>
             </ScrollView>
+
+            {/* Map Modal */}
+            <Modal isVisible={isModalVisible}>
+                <View className="rounded-3xl h-4/6 w-full overflow-hidden flex items-center justify-center">
+                    <MapView
+                        className="rounded-3xl h-full w-full"
+                        initialRegion={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        }}
+                    >
+                        <Marker
+                            draggable
+                            coordinate={{
+                            latitude: data?.latitude,
+                            longitude: data?.longitude,
+                            }}
+                            onDragEnd={
+                            (e) => alert(JSON.stringify(e.nativeEvent.coordinate))
+                            }
+                            image={BluePinSmall}
+                            title={data?.name}
+                            description={data?.address}
+                        >
+                            <Callout tooltip>
+                                <View>
+                                    <View className="flex bg-white/70 rounded-2xl px-4 py-3">
+                                        <Text className="font-semibold mb-1">{data?.name}</Text>
+                                        <Text>{data?.address}</Text>
+                                    </View>
+                                </View>
+                            </Callout>
+                        </Marker>
+                    </MapView>
+                </View>
+                <View className="flex-row items-center justify-center mt-5 rounded-full">
+                    <TouchableOpacity title="button" onPress={handleModal} >
+                        <LinearGradient
+                            colors={["#2CADCC", "#336699"]}
+                            start={[0, 0]}
+                            end={[1, 1]}
+                            location={[0.25, 0.4, 1]}
+                            className="px-2 py-1 rounded-full bg-gray-300"
+                        >
+                            <Text className="text-white px-2 py-1">Close</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
 
             {/* Footer (price/person and CTA button) */}
             <View className="items-center absolute flex-row inset-x-0 bottom-0 justify-center px-4 bg-white/70 pt-3 pb-5">
