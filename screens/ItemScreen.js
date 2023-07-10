@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import Modal from "react-native-modal";
+import Octicons from 'react-native-vector-icons/Octicons';
 
 import { ChevronLeftWhite, GreyStar, WhiteHeart, PinkHeart, BluePinSmall, BluePinNavi, GreyPin } from '../assets';
 
@@ -162,7 +163,7 @@ const ItemScreen = ({ route }) => {
                 )}
 
                 {/* Map */}
-                <View className="rounded-3xl h-full w-full overflow-hidden flex items-center justify-center">
+                <View className="rounded-3xl h-full w-full overflow-hidden flex items-center justify-center relative">
                     <MapView
                         className="rounded-3xl h-full w-full"
                         initialRegion={{
@@ -171,7 +172,6 @@ const ItemScreen = ({ route }) => {
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
-                        onPress={handleModal} 
                     >
                         <Marker
                             draggable
@@ -196,6 +196,17 @@ const ItemScreen = ({ route }) => {
                             </Callout>
                         </Marker>
                     </MapView>
+
+                    {/* Full-Screen Button */}
+                    <TouchableOpacity className="absolute right-3 top-3 rounded-lg flex justify-center items-center bg-white/70 overflow-hidden">
+                        <Octicons 
+                            name="screen-full" 
+                            size={25}
+                            color="#336699" 
+                            className="p-1 rounded-full" 
+                            onPress={handleModal} 
+                        />
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
 
@@ -234,18 +245,16 @@ const ItemScreen = ({ route }) => {
                             </Callout>
                         </Marker>
                     </MapView>
-                </View>
-                <View className="flex-row items-center justify-center mt-5 rounded-full">
-                    <TouchableOpacity title="button" onPress={handleModal} >
-                        <LinearGradient
-                            colors={["#2CADCC", "#336699"]}
-                            start={[0, 0]}
-                            end={[1, 1]}
-                            location={[0.25, 0.4, 1]}
-                            className="px-2 py-1 rounded-full bg-gray-300"
-                        >
-                            <Text className="text-white px-2 py-1">Close</Text>
-                        </LinearGradient>
+
+                    {/* Full-Screen Button */}
+                    <TouchableOpacity className="absolute right-3 bottom-6 rounded-lg flex justify-center items-center bg-white/70 overflow-hidden">
+                        <Octicons 
+                            name="screen-normal" 
+                            size={25}
+                            color="#336699" 
+                            className="p-1 rounded-full" 
+                            onPress={handleModal} 
+                        />
                     </TouchableOpacity>
                 </View>
             </Modal>
