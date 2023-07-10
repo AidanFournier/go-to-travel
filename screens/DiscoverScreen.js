@@ -45,7 +45,9 @@ const Discover = () => {
                     </Text>
                     <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-3xl text-black flex-wrap max-w-[265px]">Where do you want to go today?</Text>
                 </View>
-                <Image source={Avatar} className="w-12 h-12 rounded-full object-cover border-solid border-2 border-white"/>
+                <View className="rounded-full border-2 border-white shadow-lg">
+                    <Image source={Avatar} className="w-12 h-12 object-cover"/>
+                </View>
             </View>
 
             {/* Google Places Search Input */}
