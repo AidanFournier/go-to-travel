@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REACT_NATIVE_TRAVEL_ADVISOR_API_KEY } from "@env"
+import { REACT_NATIVE_TRAVEL_ADVISOR_API_KEY, REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env"
 
 export const getPlacesData = async ( { bl_lat, bl_lng, tr_lat, tr_lng }, type ) => {
     
@@ -22,11 +22,24 @@ export const getPlacesData = async ( { bl_lat, bl_lng, tr_lat, tr_lng }, type ) 
         lang: 'en_US'
     }
     
+    // try {
+    //     const response = await axios.get(url, {headers: headers, params: params});
+    //     const data = response.data.data;
+    //     return data;
+    // } catch (error) {
+    //     console.log(error.response);
+    // }
+};
+
+export const getUserLocation = async ( location ) => {
+
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&result_type=administrative_area_level_1&key=${REACT_NATIVE_GOOGLE_PLACES_API_KEY}`;
+
     try {
-        const response = await axios.get(url, {headers: headers, params: params});
-        const data = response.data.data;
+        const response = await axios.get(url);
+        const data = response.data;
         return data;
     } catch (error) {
         console.log(error.response);
     }
-};
+}

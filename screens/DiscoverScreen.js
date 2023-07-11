@@ -2,12 +2,13 @@ import { View, Text, SafeAreaView, Image, ScrollView, ActivityIndicator } from '
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import * as Location from 'expo-location';
 
 import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
-import { AttractionsIcon, Avatar, ChevronDown, HotelIcon, NotFound, RestaurantsIcon, Search } from '../assets';
+import { AttractionsIcon, Avatar, BluePin, ChevronDown, HotelIcon, NotFound, RestaurantsIcon, Search } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
-import { getPlacesData } from '../api';
+import { getPlacesData, getUserLocation } from '../api';
 
 const Discover = () => {
     
@@ -17,6 +18,9 @@ const Discover = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [mainData, setMainData] = useState([]);
     const [geoCoords, setGeoCoords] = useState({});
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+    const [locality, setLocality] = useState();
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -33,6 +37,22 @@ const Discover = () => {
             }, 1000)
         });
     }, [geoCoords, type]);
+
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+    
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+            getUserLocation(location).then(userData => {
+                setLocality(userData.results[0].formatted_address)
+            })
+        })();
+    }, []);
     
     return (
         <SafeAreaView className="flex-1 bg-[#F6F6F6] relative">
@@ -40,12 +60,21 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
-                    <Text style={{ fontFamily: 'Inter_300Light'}} className="text-xl mb-4">Hello
-                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-xl"> Olivia,</Text>
+                    <Text style={{ fontFamily: 'Inter_300Light'}} className="mb-2">Hello
+                        <Text style={{ fontFamily: 'Inter_500Medium'}} className=""> traveller,</Text>
                     </Text>
-                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-3xl text-black flex-wrap max-w-[265px]">Where do you want to go today?</Text>
+                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-2xl text-black flex-wrap max-w-[265px]">Where will you go today?</Text>
                 </View>
-                <Image source={Avatar} className="w-12 h-12 rounded-full object-cover border-solid border-2 border-white"/>
+                <View className="rounded-full border-2 border-white shadow-lg">
+                    <Image source={Avatar} className="w-12 h-12 object-cover"/>
+                </View>
+            </View>
+            <View className="flex-row items-start px-8 pt-5 space-x-2">
+                <Image source={BluePin} className="w-5 h-5 object-cover" />
+                <Text className="">
+                    <Text style={{ fontFamily: 'Inter_300Light'}}>Currently in </Text>
+                    <Text style={{ fontFamily: 'Inter_500Medium'}}>{locality ? locality : "Adventure Land"}</Text>
+                </Text>
             </View>
 
             {/* Google Places Search Input */}
