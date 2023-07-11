@@ -20,6 +20,7 @@ const Discover = () => {
     const [geoCoords, setGeoCoords] = useState({});
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [locality, setLocality] = useState();
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -47,18 +48,11 @@ const Discover = () => {
     
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
-            getUserLocation().then(data => {
-                console.log(data)
+            getUserLocation(location).then(userData => {
+                setLocality(userData.results[0].formatted_address)
             })
         })();
     }, []);
-    
-    let text = 'Adventure Mode';
-    if (errorMsg) {
-        text = errorMsg;
-    } else if (location) {
-        text = JSON.stringify(location);
-    }
     
     return (
         <SafeAreaView className="flex-1 bg-[#F6F6F6] relative">
@@ -77,7 +71,7 @@ const Discover = () => {
             </View>
             <View className="flex-row items-start px-8 pt-5 space-x-2">
                 <Image source={BluePin} className="w-5 h-5 object-cover" />
-                <Text style={{ fontFamily: 'Inter_400Regular'}}>Currently in {text}</Text>
+                <Text style={{ fontFamily: 'Inter_400Regular'}}>Currently in {locality ? locality : "Adventure Land"}</Text>
             </View>
 
             {/* Google Places Search Input */}
