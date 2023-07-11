@@ -60,10 +60,10 @@ const Discover = () => {
             {/* Header */}
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
-                    <Text style={{ fontFamily: 'Inter_300Light'}} className="text-xl mb-4">Hello
-                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-xl"> Olivia,</Text>
+                    <Text style={{ fontFamily: 'Inter_300Light'}} className="mb-2">Hello
+                        <Text style={{ fontFamily: 'Inter_500Medium'}} className=""> traveller,</Text>
                     </Text>
-                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-3xl text-black flex-wrap max-w-[265px]">Where do you want to go today?</Text>
+                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-2xl text-black flex-wrap max-w-[265px]">Where will you go today?</Text>
                 </View>
                 <View className="rounded-full border-2 border-white shadow-lg">
                     <Image source={Avatar} className="w-12 h-12 object-cover"/>
@@ -71,7 +71,10 @@ const Discover = () => {
             </View>
             <View className="flex-row items-start px-8 pt-5 space-x-2">
                 <Image source={BluePin} className="w-5 h-5 object-cover" />
-                <Text style={{ fontFamily: 'Inter_400Regular'}}>Currently in {locality ? locality : "Adventure Land"}</Text>
+                <Text className="">
+                    <Text style={{ fontFamily: 'Inter_300Light'}}>Currently in </Text>
+                    <Text style={{ fontFamily: 'Inter_500Medium'}}>{locality ? locality : "Adventure Land"}</Text>
+                </Text>
             </View>
 
             {/* Google Places Search Input */}
