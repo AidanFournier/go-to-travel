@@ -8,7 +8,7 @@ import { REACT_NATIVE_GOOGLE_PLACES_API_KEY } from "@env";
 import { AttractionsIcon, Avatar, BluePin, ChevronDown, HotelIcon, NotFound, RestaurantsIcon, Search } from '../assets';
 import MenuContainer from '../components/MenuContainer';
 import ItemCardContainer from '../components/ItemCardContainer';
-import { getPlacesData } from '../api';
+import { getPlacesData, getUserLocation } from '../api';
 
 const Discover = () => {
     
@@ -47,10 +47,13 @@ const Discover = () => {
     
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
+            getUserLocation().then(data => {
+                console.log(data)
+            })
         })();
     }, []);
     
-    let text = 'Waiting..';
+    let text = 'Adventure Mode';
     if (errorMsg) {
         text = errorMsg;
     } else if (location) {

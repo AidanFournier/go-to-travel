@@ -30,3 +30,16 @@ export const getPlacesData = async ( { bl_lat, bl_lng, tr_lat, tr_lng }, type ) 
         console.log(error.response);
     }
 };
+
+export const getUserLocation = async () => {
+
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=${REACT_NATIVE_TRAVEL_ADVISOR_API_KEY}`;
+
+    try {
+        const response = await axios.get(url);
+        const data = response.data.data;
+        return data;
+    } catch (error) {
+        console.log(error.response);
+    }
+}
