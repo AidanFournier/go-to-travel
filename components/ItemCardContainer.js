@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
-import { GreyPin } from '../assets';
+import { DarkGreyPin, GreyPin } from '../assets';
 
 const ItemCardContainer = ({ imageSrc, name, location, data }) => {
     const navigation = useNavigation();
@@ -24,7 +24,7 @@ const ItemCardContainer = ({ imageSrc, name, location, data }) => {
                             </Text>
 
                             <View className="flex-row items-center space-x-1">
-                                <Image source={GreyPin} className="w-3 h-3 object-cover" />
+                                <Image source={DarkGreyPin} className="w-3 h-3 object-cover" />
                                 <Text style={{ fontFamily: 'Inter_400Regular'}} className="text-gray-500 text-sm">
                                     {location?.length > 18 ? `${location.slice(0,24)}..` : location}
                                 </Text>

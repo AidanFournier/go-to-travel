@@ -78,7 +78,7 @@ const Discover = () => {
             </View>
 
             {/* Google Places Search Input */}
-            <View className="flex-row items-start bg-white mx-4 rounded-xl py-1 px-4 shadow-md m-8">
+            <View className="flex-row items-start bg-white mx-4 rounded-full py-1 px-4 shadow-md m-8">
                 <Image source={Search} className="w-4 h-4 object-cover mr-1 mt-4"/>
                 <GooglePlacesAutocomplete
                     GooglePlacesDetailsQuery={{ fields: "geometry" }}

@@ -22,13 +22,13 @@ export const getPlacesData = async ( { bl_lat, bl_lng, tr_lat, tr_lng }, type ) 
         lang: 'en_US'
     }
     
-    // try {
-    //     const response = await axios.get(url, {headers: headers, params: params});
-    //     const data = response.data.data;
-    //     return data;
-    // } catch (error) {
-    //     console.log(error.response);
-    // }
+    try {
+        const response = await axios.get(url, {headers: headers, params: params});
+        const data = response.data.data;
+        return data;
+    } catch (error) {
+        console.log(error.response);
+    }
 };
 
 export const getUserLocation = async ( location ) => {
