@@ -61,9 +61,9 @@ const Discover = () => {
             <View className="flex-row items-start justify-between px-8 pt-5">
                 <View className="mr-12">
                     <Text style={{ fontFamily: 'Inter_300Light'}} className="mb-2">Hello
-                        <Text style={{ fontFamily: 'Inter_500Medium'}} className=""> traveller,</Text>
+                        <Text style={{ fontFamily: 'Inter_500Medium'}}> traveller,</Text>
                     </Text>
-                    <Text style={{ fontFamily: 'Inter_800ExtraBold'}} className="text-2xl text-black flex-wrap max-w-[265px]">Where will you go today?</Text>
+                    <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-3xl text-black flex-wrap max-w-[245px]">Where will you go today?</Text>
                 </View>
                 <View className="rounded-full border-2 border-white shadow-lg">
                     <Image source={Avatar} className="w-12 h-12 object-cover"/>
@@ -71,14 +71,14 @@ const Discover = () => {
             </View>
             <View className="flex-row items-start px-8 pt-5 space-x-2">
                 <Image source={BluePin} className="w-5 h-5 object-cover" />
-                <Text className="">
+                <Text>
                     <Text style={{ fontFamily: 'Inter_300Light'}}>Currently in </Text>
                     <Text style={{ fontFamily: 'Inter_500Medium'}}>{locality ? locality : "Adventure Land"}</Text>
                 </Text>
             </View>
 
             {/* Google Places Search Input */}
-            <View className="flex-row items-start bg-white mx-4 rounded-xl py-1 px-4 shadow-md m-8">
+            <View className="flex-row items-start bg-white mx-4 rounded-full py-1 px-4 shadow-md m-8">
                 <Image source={Search} className="w-4 h-4 object-cover mr-1 mt-4"/>
                 <GooglePlacesAutocomplete
                     GooglePlacesDetailsQuery={{ fields: "geometry" }}
@@ -134,9 +134,9 @@ const Discover = () => {
                                 </> 
                                 ) : (
                                 <>
-                                    <View className="w-full h-[200px] items-center space-y-8 justify-center">
-                                        <Image source={NotFound} className="w-32 h-32 object-cover" />
-                                        <Text style={{ fontFamily: 'Inter_600SemiBold'}} className="text-2xl">Eh! No data found.</Text>
+                                    <View className="w-full h-full px-10 flex items-center space-y-4 justify-center">
+                                        <Image source={NotFound} className="w-28 h-28 object-cover" />
+                                        <Text style={{ fontFamily: 'Inter_500Medium'}}>Try searching by a different keyword.</Text>
                                     </View>
                                 </>
                             )}
