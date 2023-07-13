@@ -39,15 +39,15 @@ const HomeScreen = () => {
                 animation={"slideInUp"}
                 easing="ease-in"
                 duration={1000}
-                delay={2000}
-                className="absolute bottom-0 bg-white/75  h-60 w-full rounded-t-[40px] border-solid border-white border-2 flex items-center justify-between p-8">
-                <View className="flex justify-center items-center">
-                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-2xl text-[#336699]">Explore Japan.</Text>
-                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-2xl text-[#336699]">At your own pace.</Text>
+                delay={1000}
+                className="absolute bottom-0 bg-white/75  h-60 w-full rounded-t-[40px] flex items-center justify-between p-8">
+                <View className="flex justify-center items-center mt-1">
+                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-xl text-[#336699]">Explore Japan.</Text>
+                    <Text style={{ fontFamily: 'Inter_700Bold'}} className="text-xl text-[#336699]">At your own pace.</Text>
                 </View>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Discover")}
-                    className="w-11/12 flex items-center justify-center"
+                    className="w-11/12 flex items-center justify-center mb-4"
                     >
                     <Animatable.View
                         animation={"pulse"}
