@@ -145,7 +145,7 @@ const Discover = () => {
                                         
                     {/* Categories */}
                     <Text style={{ fontFamily: 'Inter_500Medium'}} className="text-2xl px-8">Categories</Text>
-                    <View className="flex-row items-center justify-between px-8 mt-4">
+                    <View className="flex-row items-center justify-between px-8 mt-4 mb-8">
                         <MenuContainer 
                             key={"hotels"}
                             title="Hotels"
