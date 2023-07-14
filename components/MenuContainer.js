@@ -18,7 +18,7 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
                 start={[0, 0]}
                 end={[1, 1]}
                 location={[0.25, 0.4, 1]}
-                className={`w-24 h-20 rounded-xl mt-2 shadow-sm items-center justify-center`}
+                className={`w-24 h-20 rounded-xl mt-2 items-center justify-center`}
             >
                 <Image 
                     source={imageSrc}

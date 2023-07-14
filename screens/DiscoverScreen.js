@@ -14,7 +14,7 @@ const Discover = () => {
     
     const navigation = useNavigation();
 
-    const [type, setType] = useState("restaurants");
+    const [type, setType] = useState("attractions");
     const [isLoading, setIsLoading] = useState(false);
     const [mainData, setMainData] = useState([]);
     const [geoCoords, setGeoCoords] = useState({});
