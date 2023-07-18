@@ -56,7 +56,7 @@ const HomeScreen = () => {
                         className="w-full h-16 rounded-full"
                     >
                         <LinearGradient 
-                            colors={["#2CADCC", "#336699"]}
+                            colors={["#80BEED", "#336699"]}
                             start={[0, 0]}
                             end={[1, 1]}
                             location={[0.25, 0.4, 1]}
