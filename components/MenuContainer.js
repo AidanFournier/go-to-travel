@@ -13,18 +13,18 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
             className={`bg-white h-30 w-28 rounded-2xl items-center ${type === title.toLowerCase() ? "shadow-xl" : "" }`} 
             onPress={handlePress}
         >
-            <LinearGradient
-                colors={["rgba(44, 173, 204, 0.2)", "rgba(165, 218, 200, 0.2)"]}
-                start={[0, 0]}
-                end={[1, 1]}
-                location={[0.25, 0.4, 1]}
-                className={`w-24 h-20 rounded-xl mt-2 items-center justify-center`}
+            <View
+                // colors={["rgba(44, 173, 204, 0.2)", "rgba(165, 218, 200, 0.2)"]}
+                // start={[0, 0]}
+                // end={[1, 1]}
+                // location={[0.25, 0.4, 1]}
+                className={`w-24 h-20 rounded-xl mt-2 items-center justify-center bg-[#80BEED]/50`}
             >
                 <Image 
                     source={imageSrc}
                     className="w-16 h-16 object-cover"
                 />
-            </LinearGradient>
+            </View>
             <Text style={{ fontFamily: 'Inter_500Medium'}} className={`my-2 ${type === title.toLowerCase() ? "text-black" : "text-gray-400" }`}>{title}</Text>
         </TouchableOpacity>
     )
