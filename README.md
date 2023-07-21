@@ -1,10 +1,11 @@
 <h1 align="left">Go To Travel</h1>
 <h3 align="left">An app to help you find and book hotels, restaurants, and attractions in cities across Japan.</h3>
 
-![Home page](https://github.com/AidanFournier/go-to-travel/assets/78288118/4f5b68f3-a9d1-42ef-943c-0af63fe803e4)
-![Discover page](https://github.com/AidanFournier/go-to-travel/assets/78288118/d0a83358-e217-4d52-89c9-52db8df2dddc)
-![Location show page](https://github.com/AidanFournier/go-to-travel/assets/78288118/66388506-5e63-491f-86f1-623f101b6bf3)
-![Zoomed-in map](https://github.com/AidanFournier/go-to-travel/assets/78288118/6505f41c-185c-4dc9-b446-4338056bbffa)
+![Home page](https://github.com/AidanFournier/go-to-travel/assets/78288118/2917b070-54e6-42f1-85d7-1085eec09698)
+![Discover page](https://github.com/AidanFournier/go-to-travel/assets/78288118/11209f6a-df02-47a9-9ba4-83af48e311b1)
+![Restaurant Show Page](https://github.com/AidanFournier/go-to-travel/assets/78288118/1ce9eccd-6880-4191-b5a0-cf725a102277)
+![Attraction Show Page](https://github.com/AidanFournier/go-to-travel/assets/78288118/1dd8a539-816b-411a-88f4-7ec929dbca6a)
+![Zoomed-in map](https://github.com/AidanFournier/go-to-travel/assets/78288118/a530c1c9-c123-4485-9754-7708b433dddc)
 
 ## Table of contents
 * [Introduction](#introduction)
