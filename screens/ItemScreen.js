@@ -57,17 +57,21 @@ const ItemScreen = ({ route }) => {
             {/* Image Card Buttons */}
             <View className="absolute flex-row inset-x-0 top-12 justify-between px-4">
                 <TouchableOpacity 
-                    className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
+                    className="w-12 h-12 rounded-full items-center justify-center bg-white/40" 
                     onPress={() => navigation.navigate("Discover")}
                 >
-                    <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
+                    <View className="w-10 h-10 rounded-full items-center justify-center bg-white/70">
+                        <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
+                    </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    className="w-12 h-12 rounded-full items-center justify-center bg-slate-500/[0.40]" 
+                    className="w-12 h-12 rounded-full items-center justify-center bg-white/40" 
                     onPress={() => setSaved(!saved)}
                 >
-                    <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
+                    <View className="w-10 h-10 rounded-full items-center justify-center bg-white/70">
+                        <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
+                    </View>
                 </TouchableOpacity>
             </View>
             
