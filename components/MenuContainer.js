@@ -12,6 +12,7 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
             className={`bg-white h-30 w-28 rounded-2xl items-center ${type === title.toLowerCase() ? "shadow-xl" : "" }`} 
             onPress={handlePress}
         >
+
             <View className={`w-24 h-20 rounded-xl mt-2 items-center justify-center bg-[#80BEED]/50`}>
                 <Image 
                     source={imageSrc}
