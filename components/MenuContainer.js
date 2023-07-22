@@ -1,6 +1,5 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
-import { LinearGradient } from "expo-linear-gradient";
 
 const MenuContainer = ({ title, imageSrc, type, setType }) => {
 
@@ -14,10 +13,6 @@ const MenuContainer = ({ title, imageSrc, type, setType }) => {
             onPress={handlePress}
         >
             <View
-                // colors={["rgba(44, 173, 204, 0.2)", "rgba(165, 218, 200, 0.2)"]}
-                // start={[0, 0]}
-                // end={[1, 1]}
-                // location={[0.25, 0.4, 1]}
                 className={`w-24 h-20 rounded-xl mt-2 items-center justify-center bg-[#80BEED]/50`}
             >
                 <Image 

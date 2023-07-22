@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import Modal from "react-native-modal";
 import Octicons from 'react-native-vector-icons/Octicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { ChevronLeftWhite, GreyStar, WhiteHeart, PinkHeart, BluePinSmall, BluePinNavi, GreyPin } from '../assets';
 
@@ -61,7 +63,7 @@ const ItemScreen = ({ route }) => {
                     onPress={() => navigation.navigate("Discover")}
                 >
                     <View className="w-10 h-10 rounded-full items-center justify-center bg-white/70">
-                        <Image source={ChevronLeftWhite} className="w-6 h-6 object-cover"/>
+                        <Ionicons name="chevron-back-sharp" size={26} color="black" />
                     </View>
                 </TouchableOpacity>
 
@@ -70,7 +72,12 @@ const ItemScreen = ({ route }) => {
                     onPress={() => setSaved(!saved)}
                 >
                     <View className="w-10 h-10 rounded-full items-center justify-center bg-white/70">
-                        <Image source={saved ? PinkHeart : WhiteHeart} className="w-6 h-6 object-cover" />
+                        {saved ? (
+                            <Ionicons name="md-heart" size={24} color="#E77686" className="mt-1"/>
+                        ) : (
+                            <Ionicons name="ios-heart-outline" size={24} color="black" className="mt-1"/>
+                        )}
+                        
                     </View>
                 </TouchableOpacity>
             </View>
